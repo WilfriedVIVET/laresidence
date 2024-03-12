@@ -1,0 +1,9 @@
+
+.container-activites{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 300px;
+    background-color: $greyClear;
+    color: $secondWhite;
+}

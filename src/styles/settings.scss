@@ -1,0 +1,64 @@
+
+/*Variables sass */
+
+$firstWhite: #FFFFFF;
+$secondRed:#DB0000;
+$greyDark:#4f4f4f;
+$greyClear:#7b7b7b;
+$secondWhite:#ECE7DE;
+$orange:rgb(250, 63, 6);
+
+$fontFamily: 'Open Sans', sans-serif;
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: $fontFamily;
+    text-decoration: none;
+    list-style: none;  
+}
+
+html,body{
+    height: 100%;
+}
+
+body{
+    background-color: $firstWhite; 
+}
+
+.content{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 100vh;
+}
+
+.title{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 150px;
+    width: 100%;
+    color: $secondRed;
+    font-size: 0.8em;
+}
+
+a{
+    color: $secondWhite;
+}
+
+.lorem{
+    height: 300px;
+    background-color: $greyClear;
+    color: $secondWhite;
+    padding: 20px;
+}
+
+button{
+    cursor: pointer;
+}
+
+button:hover{
+    transform: scale(1.1);
+}

@@ -1,0 +1,37 @@
+
+.header-menu{
+    display: flex;
+    height: 80px;
+    width: 100%;
+    background-color: $secondRed;
+    color: $firstWhite;
+    align-items: center;
+    padding-left: 20px;
+    
+    >span{
+        font-size: 1.2em;
+        margin-right: 20PX;
+        
+        >.span-date{
+          font-size: 1.2em;
+        }
+      }
+
+  >.calendrier{
+    width: 150px;
+    border: 4px solid $greyDark;
+    border-radius: 50px;
+    background-color: $firstWhite;
+    color: $secondRed;
+    font-weight: bold;
+    font-size: 1.2em; 
+    margin-left: 50px;
+  }
+
+  >.calendar{
+    position: absolute;
+    top: 80px;
+    left: 70%;
+  }
+
+}

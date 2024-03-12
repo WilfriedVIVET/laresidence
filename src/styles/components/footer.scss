@@ -1,0 +1,77 @@
+
+.container-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 200px;
+    width: 100vw;
+    background-color: $greyClear;
+    
+   
+    >.footer{
+        width: 100%;
+        display: flex;
+        text-align: center;
+        align-items: center;
+
+        >.mentions{
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+            width: 50%;
+            font-size: 0.8em;
+          >ul{
+                display: flex;
+                flex-direction: column;
+                text-align: center;      
+                margin-top: 20px;
+                
+                >li{
+                    display: flex;
+                    justify-content: space-around;
+                    height: 50px;      
+                }
+            }
+        }
+        
+        >.trait-vertical{
+            height: 130px;
+            width: 3px;
+            border-radius: 50px;
+            background-color: $secondRed;
+        }
+        
+        >.container-sociaux{
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            width: 50%;
+            justify-content: space-around;
+            align-items: center;
+            height: 130px;
+            
+            >.sociaux{
+                width: 30%;
+                height: auto;
+                display: flex;
+                justify-content: flex-start;
+               
+             >img{
+                display: flex;
+                text-align: center;
+                align-items: center;
+                height: 30px;
+                width: 30px;
+                padding-right: 10px;
+                }  
+            }
+        }
+    }
+    >.copyright{
+        padding-top: 20px;
+        margin-bottom: 20px;
+        color: $secondWhite;
+        font-size: 0.8em;
+    }
+}
+        

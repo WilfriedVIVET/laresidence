@@ -1,0 +1,148 @@
+
+.container-services{
+    display: flex;
+    flex-direction: column;
+    background-color: $greyClear;
+    margin-bottom: 20px;
+    
+
+    >.residence{
+        display: flex;
+        margin: auto;
+        height: 50%;
+        
+        >img{
+            height: 100%;
+            width: 100%;
+            max-width: 550px;
+            margin-bottom: 20px;
+        }
+    }
+
+    >.descriptif{
+        display: flex;
+        height: 250px;
+        align-items: center;
+        >ul{
+            margin-left: 50px;
+        }
+        
+        >ul >li{
+            font-size: 1.2em;
+            color: $firstWhite;
+            list-style: circle;
+
+            >a{
+                color: $secondRed;
+            }
+        }
+    }
+}
+
+.services{
+    height: auto;
+    width: 100vw;
+    background-color: $greyClear;
+
+    >.animation{
+        display: flex;
+        height: 80px;
+        background-color: $firstWhite;
+        color: $secondRed;
+        align-items: center;
+       
+        >span{
+            color: $secondRed;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 20px;
+        }
+       
+
+        >span>a>i{
+            color: $greyDark;
+            text-decoration: underline;
+            text-decoration-color: $secondRed;
+        }
+    }
+
+    
+    >.bien-etre{
+        display: flex;
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+        background-color: $firstWhite;
+        >.coiffure{
+            display: flex;
+            flex-direction: column;
+            height: auto;
+   
+            >span{
+                color: $secondRed;
+                font-size: 1.2em;
+                font-weight: bold;
+                padding: 20px;
+            }
+        }
+        
+        >.gym{
+            display: flex;
+            flex-direction: column;
+            
+            >span{
+                color: $secondRed;
+                font-size: 1.2em;
+                font-weight: bold;
+                padding: 20px;
+            }
+
+            >img{
+                height: 30%;
+                width: 30%;
+            }
+        }
+    }
+}
+
+h2{
+    height: 50px;
+    width: 100%;
+    background-color: $secondRed;
+    color: $firstWhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image{
+    display: flex;
+    height: 150px;
+    width: 250px;
+    padding: 20px;
+   
+
+    >img{
+    height: 100%;
+    width: 100%;
+}
+}
+
+
+/****************************media queries****************************/
+@media screen and (min-width:1100px){
+    .container-services{
+        flex-direction: row;
+        padding-top: 20px;
+        
+        >.residence{
+            margin: 20px;
+            padding: 0;
+        }
+
+        >.descriptif >ul >li{
+            font-size: 1.5em;
+        }
+    }
+}
+    

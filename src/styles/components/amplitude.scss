@@ -1,0 +1,16 @@
+
+.amplitude{
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    color: $firstWhite;
+    height: 50px;
+    width: 100%;
+    background-color: $greyClear;
+
+    >input{
+        margin-left: 20px;
+        width:30px ;
+        text-align: center;
+    }
+}

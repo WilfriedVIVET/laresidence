@@ -1,0 +1,33 @@
+@import '@splidejs/react-splide/css';
+
+.container-carrousel{
+    height: auto;
+    width: 100%;
+    background-color: $greyDark;
+    display: flex;
+    
+    >.carrousel{
+        display: flex;
+        margin: auto;
+        width: 80%;
+        max-width: 1380px;
+        padding: 10px;
+       
+        box-sizing: content-box;
+
+        > .splide__arrow--prev,
+        > .splide__arrow--next
+        {
+            color: $secondRed;
+            opacity:1;
+        }
+    }     
+       .carrousel img{    
+            max-height: 100%;
+            max-width: 100%;
+        }
+        
+        
+}
+
+ 
