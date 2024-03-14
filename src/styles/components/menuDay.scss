@@ -1,0 +1,68 @@
+
+.content-menu{
+    display: flex;
+    flex-direction: column;
+    height: 650px;
+    border: 1px solid $firstRed;
+    width: 95%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    font-size: 1.2em;
+    background-color: $secondWhite;
+    box-shadow: 3px 3px 14px -1px rgba(0,0,0,0.64);
+       
+    >.date{
+        display: flex;
+        height: 80px;
+        width: 100%;
+        align-items: center;
+        background: #db0000;
+        background: linear-gradient(146deg,#db0000 0%, #6e0101 80%);
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        justify-content: center;
+
+        >.jour{
+            font-size: 1.2em;
+            font-weight: bold;
+            color: $firstWhite;     
+        }
+    }
+
+    >.menu{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;  
+        align-items: center;
+        justify-content: space-around;
+  
+        
+
+        >span{
+            display: flex;
+            flex-direction: column;
+            font-size: 1em;
+            font-weight: bold;
+            width: 100%;
+            align-items: center;
+            text-transform: uppercase;
+            color: $firstRed;
+           
+            >u{
+               text-transform: lowercase;
+               color: $secondRed;
+                
+            }
+        }
+
+        >.trait{
+            height: 2px;
+            width: 50%;
+            background-color: $secondRed;
+        }
+
+    }
+}

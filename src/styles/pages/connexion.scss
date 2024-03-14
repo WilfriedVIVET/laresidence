@@ -1,10 +1,16 @@
 
 .content-formulaire{
-    height: 350px;
+    height: 40vh;
     background-color: $greyClear;
     display: flex;
     align-items: center;
-    justify-content: center;
-    
-   
+    justify-content: center;   
+}
+
+/*********************Media queries*********************/
+
+@media screen and (min-width:600px){
+    .content-formulaire{
+        height: 60vh;
+    }
 }

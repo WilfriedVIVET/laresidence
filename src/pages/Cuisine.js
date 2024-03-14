@@ -5,9 +5,11 @@ import Amplitude from "../components/Amplitude";
 import CreateMenu from "../components/CreateMenu";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { formatDate } from "../Utils/Utils";
 
 const Cuisine = () => {
-  const currentDate = new Date().toLocaleString();
+  const currentDate = formatDate(new Date());
+
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
   const [dateDebut, setDateDebut] = useState();
@@ -23,11 +25,6 @@ const Cuisine = () => {
     "SAMEDI",
     "DIMANCHE",
   ];
-
-  //Formatage de la date
-  const formatDate = (date) => {
-    return date.toLocaleDateString();
-  };
 
   //Récuperation date de la semaine (début et fin)
   const getDate = (date) => {
@@ -88,7 +85,6 @@ const Cuisine = () => {
           <CreateMenu key={index} jour={jour} numeroDay={jourList[index]} />
         ))}
       </div>
-
       <Footer />
     </>
   );

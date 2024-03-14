@@ -6,7 +6,7 @@ $secondRed:#DB0000;
 $greyDark:#4f4f4f;
 $greyClear:#7b7b7b;
 $secondWhite:#ECE7DE;
-$orange:rgb(250, 63, 6);
+$firstRed:#6E0101;
 
 $fontFamily: 'Open Sans', sans-serif;
 
@@ -24,6 +24,7 @@ html,body{
 
 body{
     background-color: $firstWhite; 
+    overflow-x: hidden;
 }
 
 .content{
@@ -32,16 +33,17 @@ body{
     flex-direction: column;
     flex-grow: 1;
     min-height: 100vh;
+    width: 100vw;
 }
 
 .title{
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    height: 150px;
+    align-items:flex-end;
+    height: 110px;
     width: 100%;
     color: $secondRed;
-    font-size: 0.8em;
+    font-size: 1em;
 }
 
 a{

@@ -7,10 +7,10 @@ import { getAccompagnement } from "../Redux/actions/getAccompagnement.action";
 import { getFromage } from "../Redux/actions/getFromage.action";
 import { getDessert } from "../Redux/actions/getDessert.action";
 import store from "../Redux/store/store";
+import { postMenu } from "../Utils/PostUtils";
 
 const CreateMenu = (props) => {
   useEffect(() => {
-    // Dispatch des actions pour récupérer les données si elles ne sont pas déjà dans le store Redux
     if (isEmpty(store.getState().getEntre)) store.dispatch(getEntre());
     if (isEmpty(store.getState().getPlat)) store.dispatch(getPlat());
     if (isEmpty(store.getState().getAccompagnement))
@@ -26,7 +26,7 @@ const CreateMenu = (props) => {
   const dessert = useSelector((state) => state.getDessert);
 
   const [menuDay, setMenuDay] = useState({
-    date: "",
+    dateDay: "",
     entre1: "",
     entre2: "",
     entre3: "",
@@ -38,35 +38,34 @@ const CreateMenu = (props) => {
     fromage2: "",
     dessert1: "",
     dessert2: "",
+    jour: "",
   });
 
   const handleSelectChange = (menuId, selectedValue) => {
     setMenuDay((prevMenuDay) => ({
       ...prevMenuDay,
+      dateDay: `${props.numeroDay}`,
       [menuId]: selectedValue,
+      jour: `${props.jour}`,
     }));
   };
 
   const confirm = () => {
-    setMenuDay((prevMenuDay) => ({
-      ...prevMenuDay,
-      date: `${props.numeroDay}`,
-    }));
+    postMenu(menuDay);
   };
 
   const handleClick = (e) => {
-    console.log("valeur categorie :" + e.target.id);
     console.log("menuDay :" + JSON.stringify(menuDay));
   };
 
-  const getRecipe = (e) => {};
-
   return (
     <div className="container">
-      <div className="container-menu">
+      <div className="container-create-menu">
         <div className="jour">
-          {props.jour}
-          <span>{props.numeroDay}</span>
+          <div className="jour-detail">
+            {props.jour}
+            <span>{props.numeroDay}</span>
+          </div>
         </div>
         <div className="menu">
           {/******************Entrée***************************** */}
@@ -85,7 +84,6 @@ const CreateMenu = (props) => {
                       className="liste-plat"
                       key={index}
                       menu={menu}
-                      onClick={getRecipe}
                       id={`entre${index}`}
                     >
                       {menu.titre}
@@ -104,7 +102,6 @@ const CreateMenu = (props) => {
                       className="liste-plat"
                       key={index}
                       menu={menu}
-                      onClick={getRecipe}
                       id={`entre${index}`}
                     >
                       {" "}
@@ -124,7 +121,6 @@ const CreateMenu = (props) => {
                       className="liste-plat"
                       key={index}
                       menu={menu}
-                      onClick={getRecipe}
                       id={`entre${index}`}
                     >
                       {" "}
@@ -151,7 +147,6 @@ const CreateMenu = (props) => {
                       className="liste-plat"
                       key={index}
                       menu={menu}
-                      onClick={getRecipe}
                       id={`plat${index}`}
                     >
                       {" "}
@@ -171,7 +166,6 @@ const CreateMenu = (props) => {
                       className="liste-plat"
                       key={index}
                       menu={menu}
-                      onClick={getRecipe}
                       id={`plat${index}`}
                     >
                       {" "}
@@ -199,7 +193,6 @@ const CreateMenu = (props) => {
                       className="liste-plat"
                       key={index}
                       menu={menu}
-                      onClick={getRecipe}
                       id={`accompagnement${index}`}
                     >
                       {" "}
@@ -221,7 +214,6 @@ const CreateMenu = (props) => {
                       className="liste-plat"
                       key={index}
                       menu={menu}
-                      onClick={getRecipe}
                       id={`accompagnement${index}`}
                     >
                       {" "}
@@ -247,7 +239,6 @@ const CreateMenu = (props) => {
                       className="liste-plat"
                       key={index}
                       menu={menu}
-                      onClick={getRecipe}
                       id={`fromage${index}`}
                     >
                       {" "}
@@ -267,7 +258,6 @@ const CreateMenu = (props) => {
                       className="liste-plat"
                       key={index}
                       menu={menu}
-                      onClick={getRecipe}
                       id={`fromage${index}`}
                     >
                       {" "}
@@ -293,7 +283,6 @@ const CreateMenu = (props) => {
                       className="liste-plat"
                       key={index}
                       menu={menu}
-                      onClick={getRecipe}
                       id={`dessert${index}`}
                     >
                       {" "}
@@ -313,7 +302,6 @@ const CreateMenu = (props) => {
                       className="liste-plat"
                       key={index}
                       menu={menu}
-                      onClick={getRecipe}
                       id={`dessert${index}`}
                     >
                       {" "}

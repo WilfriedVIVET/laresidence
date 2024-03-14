@@ -1,30 +1,38 @@
 
 .container{
     display: flex;
-    height: auto;
-    width: 100vw; 
-    box-sizing: border-box;
+    height: 100%;
+    width: 100%; 
     
-
-    >.container-menu{
+    
+    >.container-create-menu{
         display: flex;
         height: auto;
-        min-height: 500px;
         width: 100%;
-        margin-bottom: 20px;
-        border-bottom: 4px solid $secondRed;
+        border-bottom: 2px solid $secondRed;
+        background-color: $secondWhite;
        
-
-        >.jour{
-            display: flex;
-            flex-direction: column;
-            height: auto;
-            width: 10%;
+        >.jour{  
+            height: 100%;
+            width: 180px;
             background-color: $greyDark;
-            color: $firstWhite;
-            padding: 20px;
-            font-size: 1.8em;
-            font-weight: bold;
+            box-shadow: 6px 5px 15px -2px rgba(123,123,123,0.75);
+            display: flex;
+            justify-content: center;
+          
+            >.jour-detail{
+                display: flex;
+                flex-direction: column;
+                height: 20%;
+                width: 95%;
+                color: $firstWhite;
+                font-size: 1.5em;
+                font-weight: bold;
+                padding-top: 50px;
+                align-items: center;
+                
+               
+            }
         }
 
         >.menu{
@@ -32,10 +40,11 @@
             min-height: 250px;
             width: 100%;
             padding-bottom: 20px;
+          
 
             >.partie-global{
                 display: flex;
-                justify-content: center;
+                justify-content: space-around;
                 padding-top: 20px;
                 flex-direction: column;
                 width: 100%;
@@ -57,22 +66,22 @@
                 >.partie{
                     display: flex;
                     height: 70px;
-                    width: 95%;
-                    margin: auto;
+                    width: 100%;
+                 
                     align-items: center;
                     justify-content: center;
                   
                     >select{
                         display: flex;
+                        margin: 20px;
                         height: 50px;
-                        width: 450px;
-                        margin: 10px;
                         border: 1px solid $secondRed;
                         cursor: pointer;
                         justify-content: center;
                         align-items: center;
                         font-size: 1.2em;
                         color: $secondRed;
+                        box-shadow: 6px 5px 15px -2px rgba(123,123,123,0.75);
                     }
                 }
 
@@ -81,6 +90,9 @@
                     width: 150px;
                     margin: auto;
                     margin-top: 20px;
+                    background-color: $firstWhite;
+                    border-color: $secondRed;
+                    box-shadow: 6px 5px 15px -2px rgba(123,123,123,0.75);
                 }
             }
         }

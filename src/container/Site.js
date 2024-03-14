@@ -6,7 +6,7 @@ import Activites from "../pages/Activites";
 import Connexion from "../pages/Connexion";
 import Politique from "../pages/Politique";
 import Mention from "../pages/Mention";
-import Menu from "../pages/Menu";
+import Restaurant from "../pages/Restaurant";
 import Admin from "../pages/Admin";
 import Cuisine from "../pages/Cuisine";
 
@@ -17,7 +17,7 @@ const Site = () => {
         <Route path="/" element={<Accueil />} />
         <Route path="/services" element={<Services />} />
         <Route path="/activites" element={<Activites />} />
-        <Route path="/menu" element={<Menu />} />
+        <Route path="/restaurant" element={<Restaurant />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/politique" element={<Politique />} />
         <Route path="/mention" element={<Mention />} />

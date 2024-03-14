@@ -5,6 +5,7 @@ import getPlat from "./getPlat.reducer";
 import getAccompagnement from "./getAccompagnement.reducer";
 import getFromage from "./getFromage.reducer";
 import getDessert from "./getDessert.reducer";
+import getMenu from "./getMenu.reducer";
 
 export default combineReducers({
   modeReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   getAccompagnement,
   getFromage,
   getDessert,
+  getMenu,
 });

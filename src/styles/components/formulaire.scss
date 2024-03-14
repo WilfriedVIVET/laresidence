@@ -12,16 +12,17 @@ form{
     align-items: center;
     color: $secondWhite;
     background-color: $greyDark;
+  
 
     >label,input,button{
+        height: 30px;
         width: 55%;
         border-color: $secondRed;
-        height: 30px;
+        font-weight: bold;
     }
     
     >button{
         color: green;
-        font-weight: bold;
         border-radius: 50px;
     }
 
@@ -29,6 +30,22 @@ form{
         padding-left: 10px;
         color: $secondRed;
         
+    }
+
+}
+
+/******************Media queries**************************/
+
+@media screen and (min-width:600px) {
+    
+    form{
+        
+        >label,input,button{
+            font-size: 1.1em;
+            width: 70%;
+            height: 50px;
+            padding-left: 10px;
+        }
     }
 
 }

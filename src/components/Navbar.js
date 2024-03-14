@@ -28,6 +28,10 @@ const Navbar = () => {
           </li>
 
           <li className="li-navbar">
+            <NavLink to="/restaurant">Restaurant</NavLink>
+          </li>
+
+          <li className="li-navbar">
             <NavLink to="/connexion">Connexion</NavLink>
           </li>
           <li className="li-navbar">

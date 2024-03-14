@@ -1,33 +1,44 @@
 @import '@splidejs/react-splide/css';
 
-.container-carrousel{
-    height: auto;
-    width: 100%;
-    background-color: $greyDark;
+.container-carrousel {
+    height: 50vh;
+    width: 100vw;
+    background-color: $greyClear;
     display: flex;
-    
-    >.carrousel{
-        display: flex;
-        margin: auto;
-        width: 80%;
-        max-width: 1380px;
-        padding: 10px;
-       
-        box-sizing: content-box;
 
-        > .splide__arrow--prev,
-        > .splide__arrow--next
-        {
-            color: $secondRed;
-            opacity:1;
+    .carrousel {
+        height: 70%;
+        width: 80%;
+        margin: auto;
+        max-width: 540px;
+
+        .splide {
+            height: 100%;
+            width: 100%;
+            display: flex;
+
+            .splide__slide {
+                .image {
+                    height: 100%;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    
+                }
+            }
         }
-    }     
-       .carrousel img{    
-            max-height: 100%;
-            max-width: 100%;
-        }
-        
-        
+    }
 }
 
- 
+/********************Media queries***************************/
+
+@media  screen and (min-width: 600px) {
+    
+    .container-carrousel{
+        height: 60vh;
+
+        >.carrousel{
+            height: 80%;
+        }
+    }
+}

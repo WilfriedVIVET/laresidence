@@ -1,4 +1,11 @@
 
+.container-menu{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    
+}
 
 .header {
     height: 80px;
@@ -25,9 +32,11 @@
     >.photo{
         display: flex;
         margin-left: 20px;
+        height: 100%;
+        width: 50%;
         >img{
-            height: 70px;
-            width: 130px;
+            height: 100%;
+            width: 100%;
         }
     }
 }
