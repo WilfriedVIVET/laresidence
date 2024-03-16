@@ -30,3 +30,9 @@ export const formatDate = (date) => {
 
   return `${day}${months[monthIndex]}${year}`;
 };
+
+export function addDays(date, days) {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}

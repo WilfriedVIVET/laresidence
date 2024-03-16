@@ -15,11 +15,13 @@
     align-items: center;
     color: $secondWhite;
     >.date{
-        margin-left: 20px;
+        margin-left: 10px;
         display: flex;
         flex-direction: column;
-        width: 50%;
+        width: 60%;
         align-items: center;
+        font-size: 0.8em;
+        font-weight: bold;
            
         >.trait{
             display: flex;
@@ -41,6 +43,12 @@
     }
 }
 
+.appetit{
+    color: $secondRed;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 20px;
+}
 .horizontal{
     display: flex;
     margin: auto;
