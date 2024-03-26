@@ -1,0 +1,210 @@
+.modal{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 40%;
+    z-index: 10;
+    height: 500px;
+    width: 650px;
+    background-color: $firstWhite;
+    border: 4px solid $firstRed;
+    box-shadow: 3px 3px 14px -1px rgba(0,0,0,0.64);
+
+    >.close{
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        top: 5px;
+        left: calc(100% - 70px);
+        background-color: $firstWhite;
+        color: $secondRed;
+        font-size: 1.2em;
+        box-shadow: 3px 3px 14px -1px rgba(0,0,0,0.64);
+    }
+    >.modal-header{
+        display: flex;
+        color: $firstWhite;
+        height: 60px;
+        min-height: 60px;
+        background-color: $firstRed;
+        align-items: center;
+        justify-content: center;
+    }
+
+    >.categorie{
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        width: 100%;
+      
+
+        >.choice-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+
+            >.choice{
+                height: 50px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                margin-top: 20px;
+                margin-left: 50px;
+                >span{
+                    color: $secondRed;
+                    font-size: 1.2em;
+                    font-weight: bold;
+                }
+             
+                >.clicked{
+                    color:$firstWhite;
+                    background-color: $secondRed;
+                }
+            }
+           
+            >.radio{
+                width: 100%;
+                display: flex;
+                color: $secondRed;
+                font-size: 1.2em;
+                font-weight: bold;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 10px;
+
+                >.option{
+                    >label{
+                        margin-right: 5px;  
+                    }
+                }    
+            }    
+        }
+    }
+  
+        >.select{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            align-items: center;
+            padding-top: 20px;
+            gap: 20px;
+           
+            >.containe-info{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                width: 100%;
+                justify-content: center;
+                align-items: center;       
+            }
+        }             
+}
+
+.info{
+    height: 50px;
+    width: 70%;
+    border: 2px solid $secondRed;
+    color: $secondRed;
+    padding-left: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 3px 3px 14px -1px rgba(0,0,0,0.64);
+    margin-bottom: 20px;
+    >option{
+        width: 100%;
+    }
+}
+
+.option:hover{
+    transform: scale(1.1);
+
+}
+/*
+.clickedRadio{
+    color: $firstRed;
+  
+}
+*/
+.button{
+    margin-left: 20px;
+    height: 40px;
+    width: 100px;
+    background-color: $firstWhite;
+    color: $secondRed;
+    font-size: 1em;
+    font-weight: bold;
+    border: 4px solid $greyDark;  
+    border-radius: 50px; 
+}   
+
+.confirm{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+    width:auto;
+    border: 2px solid $secondRed;
+    visibility: none;
+    color: $secondRed;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 2px;
+    
+    >.container-button{
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+
+        >.oui{
+            background-color: green;
+            color: $firstWhite;
+        }
+
+        >.non{
+            background-color: $secondRed;
+            color: $firstWhite;
+        }
+    }
+ 
+}
+
+.liste{
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95%;
+    width: 95%;
+    background-color: $firstWhite;
+    margin: 20px;
+    border: 4px solid $firstRed;
+    border-radius: 15px;
+
+    >table{
+        border-collapse: collapse ;
+        background-color: $firstWhite;
+        height: 95%;
+        width: 95%;
+        border: 2px solid $firstRed;
+          
+        > thead th{
+            color: $firstWhite;
+            font-size: 1.2em;
+            background-color: $secondRed;
+        }
+
+        tbody tr td{
+                border: 2px solid $firstRed;
+                align-items: center;
+                text-align: center;
+                font-size: 1.1em;
+                font-weight: bold;
+                color: $secondRed;
+        }
+        
+    }
+}

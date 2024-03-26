@@ -6,7 +6,8 @@
     color: $firstWhite;
     height: 50px;
     width: 100%;
-    background-color: $greyClear;
+    background-color: $secondRed;
+    border-bottom: $firstRed;
 
     >input{
         margin-left: 20px;

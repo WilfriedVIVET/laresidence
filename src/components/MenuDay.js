@@ -1,87 +1,103 @@
-import React, { useEffect, useState } from "react";
-import { isEmpty } from "../Utils/Utils";
-import { getMenu } from "../Redux/actions/getMenu.action";
-import { useSelector } from "react-redux";
-import store from "../Redux/store/store";
-import { formatDate } from "../Utils/Utils";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getMenu } from "../Redux/actions/getMenu.action.js";
+import { formatDate, daysOfWeek } from "../Utils/Utils";
 import NotMenu from "./NotMenu.js";
-import { addDays } from "../Utils/Utils";
 
-const Menu = () => {
-  const currentDate = formatDate(new Date());
-  const [menuLoaded, setMenuLoaded] = useState(false);
+const MenuDay = () => {
   const menu = useSelector((state) => state.getMenu);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchMenu = async () => {
-      if (isEmpty(store.getState().getMenu)) {
-        try {
-          const dates = [];
-          for (let i = 0; i < 7; i++) {
-            const nextDate = addDays(new Date(), i);
-            dates.push(formatDate(nextDate));
-          }
-          const menuPromise = dates.map((date) =>
-            store.dispatch(getMenu(date))
-          );
-          await Promise.all(menuPromise);
-          setMenuLoaded(true);
-        } catch (error) {
-          console.error(
-            "Une erreur s'est produite lors du chargement du menu:",
-            error
-          );
-        }
+    const loadMenu = async () => {
+      const currentDate = new Date();
+      const { startOfWeek, endOfWeek } = daysOfWeek(currentDate);
+
+      //chargement du menu du lundi au dimanche de la semaine en cours.
+      let currentDateToLoad = startOfWeek;
+      while (currentDateToLoad <= endOfWeek) {
+        let formatedDate = formatDate(currentDateToLoad);
+        dispatch(getMenu(formatedDate));
+        currentDateToLoad.setDate(currentDateToLoad.getDate() + 1);
+      }
+
+      try {
+      } catch (error) {
+        console.error(
+          "Une erreur s'est produite pendant le chargement des menu:",
+          error
+        );
       }
     };
-    fetchMenu();
-  }, [currentDate]);
+    loadMenu();
+  }, [dispatch]);
 
-  if (!menuLoaded) {
-    return <div>Chargement en cours...</div>;
-  }
-  if (!menu.length) {
-    return (
-      <>
-        <NotMenu />
-      </>
-    );
+  // Trie les menu dans l ordre de la semaine.
+  const sortedMenu = menu
+    .filter((menuDay) => menuDay.length > 0)
+    .sort((a, b) => {
+      const days = [
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi",
+        "Vendredi",
+        "Samedi",
+        "Dimanche",
+      ];
+
+      return days.indexOf(a[0].jour) - days.indexOf(b[0].jour);
+    });
+
+  // Si le menu est vide, afficher le composant NotMenu
+  if (sortedMenu.length === 0) {
+    return <NotMenu />;
   } else {
     return (
-      <div className="content">
-        {menu.map((menuDay, index) => (
+      <div className="content-menuDay">
+        {sortedMenu.map((menuDay, index) => (
           <div key={index} className="content-menu">
             <div className="date">
               <span className="jour">
-                {menu[index][0].jour} {menu[index][0].dateDay}{" "}
+                {menuDay[0].jour} {menuDay[0].dateDay}{" "}
               </span>
             </div>
+
             <div className="menu">
               <span>
-                &#10070; {menu[index][0].entre1} <u> ou </u>{" "}
-                {menu[index][0].entre2} <u> OU </u> {menu[index][0].entre3}
+                &#10070; {menuDay[0].entre1} <u> ou </u> {menuDay[0].entre2}{" "}
+                <u> OU </u> {menuDay[0].entre3}
               </span>
               <div className="trait"></div>
               <span>
-                &#10070; {menu[index][0].plat1} <u> OU </u>
-                {menu[index][0].plat2}
+                &#10070; {menuDay[0].plat1} <u> OU </u>
+                {menuDay[0].plat2}
               </span>
               <div className="trait"></div>
               <span>
-                &#10070; {menu[index][0].accompagnement1} <u> ET </u>
-                {menu[index][0].accompagnement2}
+                &#10070; {menuDay[0].accompagnement1} <u> ET </u>
+                {menuDay[0].accompagnement2}
               </span>
               <div className="trait"></div>
               <span>
-                &#10070; {menu[index][0].fromage1}
+                &#10070; {menuDay[0].fromage1}
                 <u> ET </u>
-                {menu[index][0].fromage2}
+                {menuDay[0].fromage2}
               </span>
               <div className="trait"></div>
               <span>
-                &#10070; {menu[index][0].dessert1} <u> OU </u>{" "}
-                {menu[index][0].dessert2}
+                &#10070; {menuDay[0].dessert1} <u> OU </u> {menuDay[0].dessert2}
               </span>
+              <div className="appetit">
+                <span>
+                  *Les menus sont susceptibles de changer en fonction des
+                  livraisons.
+                </span>
+                <br />
+                <span>
+                  *Toutes nos viandes sont originaires de l'Union Européenne
+                </span>
+              </div>
             </div>
           </div>
         ))}
@@ -89,5 +105,4 @@ const Menu = () => {
     );
   }
 };
-
-export default Menu;
+export default MenuDay;

@@ -6,19 +6,28 @@
     background-color: $secondRed;
     color: $firstWhite;
     align-items: center;
-    padding-left: 20px;
-    
+   
     >span{
-        font-size: 1.2em;
-        margin-right: 20PX;
-        
-        >.span-date{
-          font-size: 1.2em;
-        }
-      }
+      margin-left: 20px;
+      font-size: 1.2em;
+    }
 
-  >.calendrier{
-    width: 150px;
+    >.container-span{
+      width:400px;  
+      font-size: 1.2em;
+      margin-left: 20PX;
+      
+      >.span-date{
+        font-size: 1.2em;
+        min-width: 140px;
+       
+      }
+    }
+  
+
+  >.btn-dashboard{
+    width: auto;
+    padding: 5px;
     border: 4px solid $greyDark;
     border-radius: 50px;
     background-color: $firstWhite;
@@ -28,11 +37,102 @@
     margin-left: 50px;
   }
 
-  >.calendar{
-    position: absolute;
-    top: 80px;
-    left: 70%;
-  }
-
 }
 
+/**********************Calendar********************************/
+.react-calendar { 
+  position: absolute;
+  top: 80px;
+  left: 70%;
+  width: 400px;
+  max-width: 100%;
+  background-color: $firstWhite;
+  color: $greyDark;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  border: 2px solid $secondRed;
+ }
+ .react-calendar__navigation button {
+  color: $secondRed;
+  min-width: 44px;
+  font-size: 1.5em;
+  margin-top: 8px;
+ }
+ .react-calendar__navigation button:enabled:hover,
+ .react-calendar__navigation button:enabled:focus {
+  background-color: $firstWhite;
+ }
+ .react-calendar__navigation button[disabled] {
+  background-color: $secondWhite;
+ }
+ abbr[title] {
+  text-decoration: none;
+  color: $greyDark;
+}
+  
+ abbr[title="lundi"]{
+    color: $secondRed;
+    font-weight: bold;
+    text-decoration: underline;
+    
+  }
+
+ 
+ .react-calendar__tile:enabled:hover,
+ .react-calendar__tile:enabled:focus {
+  background: #f8f8fa;
+  color: $secondRed;
+  border-radius: 6px;
+ }
+ .react-calendar__tile--now {
+  background: $greyClear;
+  border-radius: 6px;
+  font-weight: bold;
+  color: $firstWhite;
+ }
+ .react-calendar__tile--now:enabled:hover,
+ .react-calendar__tile--now:enabled:focus {
+  background:$secondRed;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #6f48eb;
+ }
+ .react-calendar__tile--hasActive:enabled:hover,
+ .react-calendar__tile--hasActive:enabled:focus {
+  background: #f8f8fa;
+ }
+ .react-calendar__tile--active {
+  background: $secondRed;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+ }
+ .react-calendar__tile--active:enabled:hover,
+ .react-calendar__tile--active:enabled:focus {
+  background: $secondRed;
+  color: white;
+ }
+ .react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #f8f8fa;
+ }
+ .react-calendar__tile--range {
+  background: #f8f8fa;
+  color: $secondRed;
+  border-radius: 0;
+ }
+ .react-calendar__tile--rangeStart {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  background: $secondRed;
+  color: white;
+ }
+ .react-calendar__tile--rangeEnd {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background:$secondRed;
+  color: white;
+ }

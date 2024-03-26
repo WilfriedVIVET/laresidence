@@ -4,7 +4,6 @@
     height: 100%;
     width: 100%; 
     
-    
     >.container-create-menu{
         display: flex;
         height: auto;
@@ -29,9 +28,7 @@
                 font-size: 1.5em;
                 font-weight: bold;
                 padding-top: 50px;
-                align-items: center;
-                
-               
+                align-items: center;    
             }
         }
 
@@ -41,7 +38,6 @@
             width: 100%;
             padding-bottom: 20px;
           
-
             >.partie-global{
                 display: flex;
                 justify-content: space-around;
@@ -49,7 +45,6 @@
                 flex-direction: column;
                 width: 100%;
                 
-
                 >h2{
                     color: $secondRed;
                     text-decoration: underline;
@@ -60,41 +55,34 @@
                 >.partie,button{
                     color: $secondRed;
                     font-weight: bold;
-                    font-size: 1.2em;
+                    font-size: 1.2em;  
                 }
 
                 >.partie{
                     display: flex;
                     height: 70px;
                     width: 100%;
-                 
                     align-items: center;
                     justify-content: center;
-                  
-                    >select{
-                        display: flex;
-                        margin: 20px;
-                        height: 50px;
-                        border: 1px solid $secondRed;
-                        cursor: pointer;
-                        justify-content: center;
-                        align-items: center;
-                        font-size: 1.2em;
-                        color: $secondRed;
-                        box-shadow: 6px 5px 15px -2px rgba(123,123,123,0.75);
-                    }
                 }
 
                 >.confirm{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     height: 50px;
                     width: 150px;
                     margin: auto;
                     margin-top: 20px;
                     background-color: $firstWhite;
-                    border-color: $secondRed;
+                    border: 4px solid $greyDark;
+                    border-radius: 50px;
                     box-shadow: 6px 5px 15px -2px rgba(123,123,123,0.75);
                 }
             }
         }
     }
 }
+
+
+  

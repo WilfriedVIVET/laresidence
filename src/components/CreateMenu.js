@@ -8,6 +8,8 @@ import { getFromage } from "../Redux/actions/getFromage.action";
 import { getDessert } from "../Redux/actions/getDessert.action";
 import store from "../Redux/store/store";
 import { postMenu } from "../Utils/PostUtils";
+import Select from "react-select";
+import "../styles/settings.scss";
 
 const CreateMenu = (props) => {
   useEffect(() => {
@@ -41,21 +43,36 @@ const CreateMenu = (props) => {
     jour: "",
   });
 
-  const handleSelectChange = (menuId, selectedValue) => {
+  const handleSelectChange = (menuId, selectValue) => {
     setMenuDay((prevMenuDay) => ({
       ...prevMenuDay,
       dateDay: `${props.numeroDay}`,
-      [menuId]: selectedValue,
+      [menuId]: selectValue,
       jour: `${props.jour}`,
     }));
   };
 
   const confirm = () => {
+    console.log("menu creer + " + JSON.stringify(menuDay));
     postMenu(menuDay);
   };
 
-  const handleClick = (e) => {
-    console.log("menuDay :" + JSON.stringify(menuDay));
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: "withe",
+      textTransform: "capitalize",
+      color: state.isSelected ? "#DB0000" : "#DB0000",
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "#DB0000",
+    }),
+    control: (provided) => ({
+      ...provided,
+      minWidth: "355px",
+      color: "#DB0000",
+    }),
   };
 
   return (
@@ -73,61 +90,47 @@ const CreateMenu = (props) => {
             <br />
             <div className="partie">
               &#10070;{" "}
-              <select
-                onClick={handleClick}
-                onChange={(e) => handleSelectChange("entre1", e.target.value)}
-              >
-                <option value="">Choisissez une entrée</option>
-                {!isEmpty(entre) &&
-                  entre.map((menu, index) => (
-                    <option
-                      className="liste-plat"
-                      key={index}
-                      menu={menu}
-                      id={`entre${index}`}
-                    >
-                      {menu.titre}
-                    </option>
-                  ))}
-              </select>{" "}
+              {!isEmpty(entre) && (
+                <Select
+                  options={entre.map((menu, index) => ({
+                    value: menu.id,
+                    label: menu.titre,
+                  }))}
+                  onChange={(selectedOption) =>
+                    handleSelectChange("entre1", selectedOption.label)
+                  }
+                  styles={customStyles}
+                  placeholder="Choisissez une entrée"
+                />
+              )}
               OU{" "}
-              <select
-                onClick={handleClick}
-                onChange={(e) => handleSelectChange("entre2", e.target.value)}
-              >
-                <option value="">Choisissez une entrée</option>
-                {!isEmpty(entre) &&
-                  entre.map((menu, index) => (
-                    <option
-                      className="liste-plat"
-                      key={index}
-                      menu={menu}
-                      id={`entre${index}`}
-                    >
-                      {" "}
-                      {menu.titre}
-                    </option>
-                  ))}
-              </select>{" "}
+              {!isEmpty(entre) && (
+                <Select
+                  options={entre.map((menu, index) => ({
+                    value: menu.id,
+                    label: menu.titre,
+                  }))}
+                  onChange={(selectedOption) =>
+                    handleSelectChange("entre2", selectedOption.label)
+                  }
+                  styles={customStyles}
+                  placeholder="Choisissez une entrée"
+                />
+              )}
               OU{" "}
-              <select
-                onClick={handleClick}
-                onChange={(e) => handleSelectChange("entre3", e.target.value)}
-              >
-                <option value="">Choisissez une entrée</option>
-                {!isEmpty(entre) &&
-                  entre.map((menu, index) => (
-                    <option
-                      className="liste-plat"
-                      key={index}
-                      menu={menu}
-                      id={`entre${index}`}
-                    >
-                      {" "}
-                      {menu.titre}
-                    </option>
-                  ))}
-              </select>{" "}
+              {!isEmpty(entre) && (
+                <Select
+                  options={entre.map((menu, index) => ({
+                    value: menu.id,
+                    label: menu.titre,
+                  }))}
+                  onChange={(selectedOption) =>
+                    handleSelectChange("entre3", selectedOption.label)
+                  }
+                  styles={customStyles}
+                  placeholder="Choisissez une entrée"
+                />
+              )}
             </div>
           </div>
 
@@ -136,43 +139,33 @@ const CreateMenu = (props) => {
             <br />
             <div className="partie">
               &#10070;{" "}
-              <select
-                onClick={handleClick}
-                onChange={(e) => handleSelectChange("plat1", e.target.value)}
-              >
-                <option value="">Choisissez un plat</option>
-                {!isEmpty(plat) &&
-                  plat.map((menu, index) => (
-                    <option
-                      className="liste-plat"
-                      key={index}
-                      menu={menu}
-                      id={`plat${index}`}
-                    >
-                      {" "}
-                      {menu.titre}
-                    </option>
-                  ))}
-              </select>{" "}
+              {!isEmpty(plat) && (
+                <Select
+                  options={plat.map((menu, index) => ({
+                    value: menu.id,
+                    label: menu.titre,
+                  }))}
+                  onChange={(selectedOption) =>
+                    handleSelectChange("plat1", selectedOption.label)
+                  }
+                  styles={customStyles}
+                  placeholder="Choisissez un plat"
+                />
+              )}
               OU{" "}
-              <select
-                onClick={handleClick}
-                onChange={(e) => handleSelectChange("plat2", e.target.value)}
-              >
-                <option value="">Choisissez un plat</option>
-                {!isEmpty(plat) &&
-                  plat.map((menu, index) => (
-                    <option
-                      className="liste-plat"
-                      key={index}
-                      menu={menu}
-                      id={`plat${index}`}
-                    >
-                      {" "}
-                      {menu.titre}
-                    </option>
-                  ))}
-              </select>{" "}
+              {!isEmpty(plat) && (
+                <Select
+                  options={plat.map((menu, index) => ({
+                    value: menu.id,
+                    label: menu.titre,
+                  }))}
+                  onChange={(selectedOption) =>
+                    handleSelectChange("plat2", selectedOption.label)
+                  }
+                  styles={customStyles}
+                  placeholder="Choisissez un plat"
+                />
+              )}
             </div>
           </div>
           {/******************Accompagnement***************************** */}
@@ -180,47 +173,33 @@ const CreateMenu = (props) => {
             <br />
             <div className="partie">
               &#10070;{" "}
-              <select
-                onClick={handleClick}
-                onChange={(e) =>
-                  handleSelectChange("accompagnement1", e.target.value)
-                }
-              >
-                <option value="">Choisissez un accompagnement</option>
-                {!isEmpty(accompagnement) &&
-                  accompagnement.map((menu, index) => (
-                    <option
-                      className="liste-plat"
-                      key={index}
-                      menu={menu}
-                      id={`accompagnement${index}`}
-                    >
-                      {" "}
-                      {menu.titre}
-                    </option>
-                  ))}
-              </select>{" "}
+              {!isEmpty(accompagnement) && (
+                <Select
+                  options={accompagnement.map((menu, index) => ({
+                    value: menu.id,
+                    label: menu.titre,
+                  }))}
+                  onChange={(selectedOption) =>
+                    handleSelectChange("accompagnement1", selectedOption.label)
+                  }
+                  styles={customStyles}
+                  placeholder="Choisissez un accompagnement"
+                />
+              )}
               ET{" "}
-              <select
-                onClick={handleClick}
-                onChange={(e) =>
-                  handleSelectChange("accompagnement2", e.target.value)
-                }
-              >
-                <option value="">Choisissez un accompagnement</option>
-                {!isEmpty(accompagnement) &&
-                  accompagnement.map((menu, index) => (
-                    <option
-                      className="liste-plat"
-                      key={index}
-                      menu={menu}
-                      id={`accompagnement${index}`}
-                    >
-                      {" "}
-                      {menu.titre}
-                    </option>
-                  ))}
-              </select>{" "}
+              {!isEmpty(accompagnement) && (
+                <Select
+                  options={accompagnement.map((menu, index) => ({
+                    value: menu.id,
+                    label: menu.titre,
+                  }))}
+                  onChange={(selectedOption) =>
+                    handleSelectChange("accompagnement2", selectedOption.label)
+                  }
+                  styles={customStyles}
+                  placeholder="Choisissez un accompagnement"
+                />
+              )}
             </div>
           </div>
           {/******************Fromage***************************** */}
@@ -228,43 +207,33 @@ const CreateMenu = (props) => {
             <br />
             <div className="partie">
               &#10070;{" "}
-              <select
-                onClick={handleClick}
-                onChange={(e) => handleSelectChange("fromage1", e.target.value)}
-              >
-                <option value="">Choisissez un fromage</option>
-                {!isEmpty(fromage) &&
-                  fromage.map((menu, index) => (
-                    <option
-                      className="liste-plat"
-                      key={index}
-                      menu={menu}
-                      id={`fromage${index}`}
-                    >
-                      {" "}
-                      {menu.titre}
-                    </option>
-                  ))}
-              </select>{" "}
+              {!isEmpty(fromage) && (
+                <Select
+                  options={fromage.map((menu, index) => ({
+                    value: menu.id,
+                    label: menu.titre,
+                  }))}
+                  onChange={(selectedOption) =>
+                    handleSelectChange("fromage1", selectedOption.label)
+                  }
+                  styles={customStyles}
+                  placeholder="Choisissez un fromage"
+                />
+              )}
               ET{" "}
-              <select
-                onClick={handleClick}
-                onChange={(e) => handleSelectChange("fromage2", e.target.value)}
-              >
-                <option value="">Choisissez un fromage</option>
-                {!isEmpty(fromage) &&
-                  fromage.map((menu, index) => (
-                    <option
-                      className="liste-plat"
-                      key={index}
-                      menu={menu}
-                      id={`fromage${index}`}
-                    >
-                      {" "}
-                      {menu.titre}
-                    </option>
-                  ))}
-              </select>{" "}
+              {!isEmpty(fromage) && (
+                <Select
+                  options={fromage.map((menu, index) => ({
+                    value: menu.id,
+                    label: menu.titre,
+                  }))}
+                  onChange={(selectedOption) =>
+                    handleSelectChange("fromage2", selectedOption.label)
+                  }
+                  styles={customStyles}
+                  placeholder="Choisissez un fromage"
+                />
+              )}
             </div>
           </div>
           {/******************Dessert***************************** */}
@@ -272,43 +241,33 @@ const CreateMenu = (props) => {
             <br />
             <div className="partie">
               &#10070;{" "}
-              <select
-                onClick={handleClick}
-                onChange={(e) => handleSelectChange("dessert1", e.target.value)}
-              >
-                <option value="">Choisissez un dessert</option>
-                {!isEmpty(dessert) &&
-                  dessert.map((menu, index) => (
-                    <option
-                      className="liste-plat"
-                      key={index}
-                      menu={menu}
-                      id={`dessert${index}`}
-                    >
-                      {" "}
-                      {menu.titre}
-                    </option>
-                  ))}
-              </select>{" "}
+              {!isEmpty(dessert) && (
+                <Select
+                  options={dessert.map((menu, index) => ({
+                    value: menu.id,
+                    label: menu.titre,
+                  }))}
+                  onChange={(selectedOption) =>
+                    handleSelectChange("dessert1", selectedOption.label)
+                  }
+                  styles={customStyles}
+                  placeholder="Choisissez un dessert"
+                />
+              )}
               OU{" "}
-              <select
-                onClick={handleClick}
-                onChange={(e) => handleSelectChange("dessert2", e.target.value)}
-              >
-                <option value="">Choisissez un dessert</option>
-                {!isEmpty(dessert) &&
-                  dessert.map((menu, index) => (
-                    <option
-                      className="liste-plat"
-                      key={index}
-                      menu={menu}
-                      id={`dessert${index}`}
-                    >
-                      {" "}
-                      {menu.titre}
-                    </option>
-                  ))}
-              </select>{" "}
+              {!isEmpty(dessert) && (
+                <Select
+                  options={dessert.map((menu, index) => ({
+                    value: menu.id,
+                    label: menu.titre,
+                  }))}
+                  onChange={(selectedOption) =>
+                    handleSelectChange("dessert2", selectedOption.label)
+                  }
+                  styles={customStyles}
+                  placeholder="Choisissez un dessert"
+                />
+              )}
             </div>
             <button className="confirm" onClick={confirm}>
               Confirmez

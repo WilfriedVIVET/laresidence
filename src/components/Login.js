@@ -3,13 +3,13 @@ import React from "react";
 const Login = () => {
   return (
     <>
-      <form>
-        <input type="text" name="name" placeholder="Votre nom" />
+      <form className="form-connection">
+        <input type="text" name="name" placeholder="Nom" />
         <br />
         <input
           type="current-password"
           name="password"
-          placeholder="Votre Mot de passe"
+          placeholder="Mot de passe"
         />
         <br />
         <button type="submit">Connexion</button>

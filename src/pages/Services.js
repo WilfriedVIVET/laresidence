@@ -8,10 +8,10 @@ const Services = () => {
       <div className="content">
         <Navbar />
         <div className="title">
-          <h1>Nos Services:</h1>
+          <h1>NOS SERVICES</h1>
         </div>
         <div className="container-services">
-          <div className="residence">
+          <div className="image">
             <img src="residence.jpg" alt="La résidence" />
           </div>
           <div className="descriptif">
@@ -21,7 +21,7 @@ const Services = () => {
               <li>Service à la personne</li>
               <li>Accés Wifi</li>
               <li>
-                <a href="/menu">Restaurant sur place</a>
+                <a href="/restaurant">Restaurant sur place</a>
               </li>
               <li>
                 <a href="/activites">Activité 6j/7</a>
@@ -31,41 +31,56 @@ const Services = () => {
           </div>
         </div>
         <div className="services">
-          <h2>Activitées:</h2>
-          <div className="animation">
-            <span>
-              Toutes les semaines des activitées et animation vous sont proposé{" "}
-              <a href="/activites">
-                <i>ici</i>
-              </a>
-              .
-            </span>
+          <div className="titre">
+            <h2>ACTIVITÉES</h2>
           </div>
-          <div className="bien-etre">
-            <div className="coiffure">
-              <h2>Coiffure:</h2>
-              <div className="image">
-                <img src="coiffure.jpg" alt="coiffure" />
-              </div>
-              <span>Nos coiffeuses reste à votre disposition 6J/7.</span>
-              <span>Prenez rendez-vous au : 06.32.32.32.32</span>
+          <div className="animation">
+            <div className="image">
+              <img src="bingo.jpg" alt="bingo" />
             </div>
-            <div className="trait"></div>
-            <div className="gym">
-              <h2>Sport</h2>
-              <div className="image">
-                <img src="gym.jpg" alt="gym" />
-              </div>
+            <div className="descriptif">
               <span>
+                Toutes les semaines des activitées et animation vous sont
+                proposé{" "}
+                <a href="/activites">
+                  <i>ici</i>
+                </a>
+              </span>
+            </div>
+          </div>
+          <div className="titre">
+            <h2>COIFFURE</h2>
+          </div>
+          <div className="animation">
+            <div className="image">
+              <img src="coiffure.jpg" alt="coiffure" />
+            </div>
+            <div className="descriptif">
+              <p>
+                Nos coiffeuses reste à votre disposition 6J/7. Prenez
+                rendez-vous au : 06.32.32.32.32
+              </p>
+            </div>
+          </div>
+          <div className="titre">
+            <h2>Sport</h2>
+          </div>
+          <div className="animation">
+            <div className="image">
+              <img src="gym.jpg" alt="gym" />
+            </div>
+            <div className="descriptif">
+              <p>
                 Nos coachs sportifs vous ferons garder la <strong>forme</strong>
                 .
-              </span>
-              <span>Tous les matins dans la grande salle.</span>
+                <br />
+                Tous les matins dans la grande salle.
+              </p>
             </div>
           </div>
-          <div className="aide"></div>
         </div>
       </div>
+
       <Footer />
     </>
   );

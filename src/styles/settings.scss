@@ -7,6 +7,7 @@ $greyDark:#4f4f4f;
 $greyClear:#7b7b7b;
 $secondWhite:#ECE7DE;
 $firstRed:#6E0101;
+$boxShadow: 3px 3px 14px -1px rgba(0,0,0,0.64);
 
 $fontFamily: 'Open Sans', sans-serif;
 
@@ -44,6 +45,7 @@ body{
     width: 100%;
     color: $secondRed;
     font-size: 1em;
+    padding-bottom: 20px;
 }
 
 a{

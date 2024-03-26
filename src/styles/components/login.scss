@@ -1,4 +1,4 @@
-form{
+.form-connection{
     padding-top: 20px;
     padding-bottom: 20px;
     height: 70%;
@@ -19,11 +19,11 @@ form{
         width: 55%;
         border-color: $secondRed;
         font-weight: bold;
+        border-radius: 50px;
     }
     
     >button{
         color: green;
-        border-radius: 50px;
     }
 
     >input::placeholder{
@@ -31,6 +31,7 @@ form{
         color: $secondRed;
         
     }
+
 
 }
 

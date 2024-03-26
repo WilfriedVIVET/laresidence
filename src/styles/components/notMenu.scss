@@ -1,21 +1,22 @@
 
 .notMenu{
-    background-color: $greyClear;
-    height: 100vh;
+    background-color: $secondRed;
+    height: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-grow: 1;
     
     
 
     >span{
-        margin-top:20%;
+        margin-top:20px;
         font-weight: bold;
         text-transform: uppercase;
-        font-size: 1.2em;
+        font-size: 1.5em;
         color: $firstWhite;
         text-decoration: underline;
-        text-decoration-color:$secondRed ;
+        text-decoration-color:$firstWhite ;
         text-underline-offset: 0.8em;
 
     }
