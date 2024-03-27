@@ -1,0 +1,115 @@
+
+.window-admin{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 45%;
+    background-color: $firstWhite;
+    border: 4px solid $firstRed;
+    box-shadow: $boxShadow;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+       
+    >.container-radio{
+        margin-top: 20px;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        >.radio{
+            display: flex;
+            gap: 10px;
+            width: 100px;   
+            color: $firstRed;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    }
+
+    >.form-compte{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        height: 60%;
+        width: 100%;
+        align-items: center;
+        
+        .container-principal{
+            display: flex;
+            flex-direction: column;
+            height: 60%;
+            width: 70%;
+            
+            >.creation-info{
+                display: flex;
+                align-items: center;
+                height: 50px;
+                width: 80%;  
+                color: $firstRed;
+                font-size: 1.2em;
+                font-weight: bold; 
+                margin-left: 20px;
+                
+                >label{
+                    width: 40%;  
+                }
+                
+                >input{
+                    height: 30px;
+                    width: 40%;
+                    margin-left: 20px;
+                    border: 2px solid $firstRed;
+                    color: $firstRed;
+                    font-weight: bold;
+                }
+                
+                input[type=checkbox] {
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    -ms-appearance: none;
+                }
+                input[type=checkbox] {
+                border-radius: 4px;
+                height: 50%;
+                background: $firstWhite;
+                border: 2px solid $firstRed;
+            }
+            input[type="checkbox"]:checked {
+                background: $firstRed;
+                
+                &:before {
+                    content: '\2713';
+                    color: $firstWhite;
+                    
+                }
+            }
+            >#mixed{
+                width: 35px;  
+                height: 60%;
+            }
+        }
+
+           
+          
+        }  
+        >.creation-valider{
+            display: flex;
+            width: 80%;
+            align-items: center;
+            justify-content: center;
+            
+            >.button{
+                margin-top: 20px;
+                width: 100px;
+                padding: 5px;
+                color: green;
+            }         
+        }
+    }  
+}
+
+

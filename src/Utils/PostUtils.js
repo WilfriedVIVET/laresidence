@@ -7,7 +7,7 @@ export const postMenu = async (menuDay) => {
       "http://localhost/API_RESIDENCE/postMenu.php",
       JSON.stringify(menuDay)
     );
-    alert(response.data.message);
+    alert(response.data.success);
   } catch (error) {
     alert("Erreur de  :" + error.response.data.error);
     throw error;
@@ -24,6 +24,23 @@ export const postPlat = async (newPlat) => {
     alert(response.data.success);
   } catch (error) {
     alert("Erreur de  :" + error.response.data.error);
+    throw error;
+  }
+};
+
+//Nouveau compte:
+export const postCompte = async (newCompte) => {
+  console.log("formulaire = " + JSON.stringify(newCompte));
+  try {
+    const response = await axios.post(
+      "http://localhost/API_RESIDENCE/postCompte.php",
+      JSON.stringify(newCompte)
+    );
+    alert(response.data.success);
+    console.log("probleme + " + response.data.message);
+  } catch (error) {
+    alert("Erreur de  :" + error.response.data.error);
+
     throw error;
   }
 };

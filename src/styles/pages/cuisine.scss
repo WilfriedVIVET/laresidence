@@ -3,7 +3,7 @@
     display: flex;
     height: 80px;
     width: 100%;
-    background-color: $secondRed;
+    background-color: $firstRed;
     color: $firstWhite;
     align-items: center;
    
@@ -24,14 +24,13 @@
       }
     }
   
-
   >.btn-dashboard{
     width: auto;
     padding: 5px;
     border: 4px solid $greyDark;
     border-radius: 50px;
     background-color: $firstWhite;
-    color: $secondRed;
+    color: $firstRed;
     font-weight: bold;
     font-size: 1.2em; 
     margin-left: 50px;
@@ -50,10 +49,10 @@
   color: $greyDark;
   border-radius: 8px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  border: 2px solid $secondRed;
+  border: 2px solid $firstRed;
  }
  .react-calendar__navigation button {
-  color: $secondRed;
+  color: $firstRed;
   min-width: 44px;
   font-size: 1.5em;
   margin-top: 8px;
@@ -81,7 +80,7 @@
  .react-calendar__tile:enabled:hover,
  .react-calendar__tile:enabled:focus {
   background: #f8f8fa;
-  color: $secondRed;
+  color: $firstRed;
   border-radius: 6px;
  }
  .react-calendar__tile--now {
@@ -92,7 +91,7 @@
  }
  .react-calendar__tile--now:enabled:hover,
  .react-calendar__tile--now:enabled:focus {
-  background:$secondRed;
+  background:$firstRed;
   border-radius: 6px;
   font-weight: bold;
   color: #6f48eb;
@@ -102,14 +101,14 @@
   background: #f8f8fa;
  }
  .react-calendar__tile--active {
-  background: $secondRed;
+  background: $firstRed;
   border-radius: 6px;
   font-weight: bold;
   color: white;
  }
  .react-calendar__tile--active:enabled:hover,
  .react-calendar__tile--active:enabled:focus {
-  background: $secondRed;
+  background: $firstRed;
   color: white;
  }
  .react-calendar--selectRange .react-calendar__tile--hover {
@@ -117,7 +116,7 @@
  }
  .react-calendar__tile--range {
   background: #f8f8fa;
-  color: $secondRed;
+  color: $firstRed;
   border-radius: 0;
  }
  .react-calendar__tile--rangeStart {
@@ -125,7 +124,7 @@
   border-bottom-right-radius: 0;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-  background: $secondRed;
+  background: $firstRed;
   color: white;
  }
  .react-calendar__tile--rangeEnd {
@@ -133,6 +132,6 @@
   border-bottom-left-radius: 0;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  background:$secondRed;
+  background:$firstRed;
   color: white;
  }
