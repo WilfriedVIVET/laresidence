@@ -7,6 +7,7 @@ import getFromage from "./getFromage.reducer";
 import getDessert from "./getDessert.reducer";
 import getMenu from "./getMenu.reducer";
 import getUtilisateur from "./getUtilisateur.reducer";
+import getDateMenu from "./getDateMenu.reducer";
 
 export default combineReducers({
   modeReducer,
@@ -17,4 +18,5 @@ export default combineReducers({
   getDessert,
   getMenu,
   getUtilisateur,
+  getDateMenu,
 });

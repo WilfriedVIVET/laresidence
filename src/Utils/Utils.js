@@ -10,7 +10,6 @@ export const isEmpty = (value) => {
 
 //Formatage d'une date en (10-10-2024)
 export const formateDateEu = (date) => {
-  console.log("fonction getDate = " + date);
   const day = String(date.getDate()).padStart(2, "0");
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const year = date.getFullYear();

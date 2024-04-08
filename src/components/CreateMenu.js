@@ -50,13 +50,11 @@ const CreateMenu = (props) => {
       [menuId]: selectValue,
       jour: `${props.jour}`,
     }));
-    console.log("test = " + menuDay.dateDay);
   };
 
   //Post du menu
   const confirm = () => {
     postMenu(menuDay);
-    console.log("date envoyée = " + JSON.stringify(menuDay));
   };
 
   //Style des select-react
