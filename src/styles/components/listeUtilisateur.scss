@@ -1,23 +1,106 @@
-
-.container-board{
+.window-admin{
+    height: 100vh;
     display: flex;
-    background-color: aqua;
-    height: 100%;
+    flex-direction: column;
+    
+    .header-admin{
+        display: flex;
+        align-items: center;
+        min-height: 80px;
+        width: 100%;
+        background-color: $firstRed;
+        color: $firstWhite;
+        justify-content: center;            
+    }
+    >.container-board{
+        display: flex;
+        background-color: aqua;
+   
 
     >.board{
-        height: 90%;
+        display: flex;
+        flex-direction: column;
+        height: 458px;
         width: 100%;
         display: flex;
         background-color: antiquewhite;
         border: 1px solid $firstRed;
+        
+        >.categorie-utilisateur{
+            display: flex;
+            color: $firstRed;
+            background-color: $firstWhite;
+            justify-content: center;
+            width: 100%;
+            font-size: 1.2em;
+            font-weight: bold;
+        }     
+    }
+    
+    
+}
+.table-container{
+    height: 100%;
+    max-height: 420px ;
+    overflow-y: scroll;
+    
+    >table{
+        border-collapse: collapse ;
+        background-color: $firstWhite;
+        height: auto;
+        width: 100%;
+        border: 2px solid $firstRed;
+        
+        > thead th{
+            color: $firstRed;
+            font-size: 1.2em;
+            background-color: $firstWhite;
+            border: 2px solid $firstRed;
+        }
+        
+        >tbody{
+            height: 100%;
+        }
+        
+        >tbody tr td{
+            border: 2px solid $firstRed;
+            padding-left: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: $secondRed;
+            height: 30px;    
+        }   
+    }
+}
+}
+.table-container table tbody tr:hover {
+    background-color: $greyClear;
+    
+    >td{
+        color: $firstWhite;
     }
 }
 
-table{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    border: 2px solid $firstRed;
+.table-container table thead th:hover {
+    cursor: pointer;
+}
 
-   
+.delete{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    height: 100%;
+    
+    width: 100%;
+    justify-content: center;
+    
+   >input{
+    width: 100%;
+    text-align: center;
+    border:none;
+    color: $firstRed;
+    font-size: 1.1em;
+    font-weight: bold;
+   }
 }

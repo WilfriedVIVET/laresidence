@@ -4,14 +4,16 @@ import { postCompte } from "../Utils/PostUtils";
 const CreationCompte = () => {
   const [selectRadio, setSelectRadio] = useState();
   const [validation, setValidation] = useState(false);
+
   const [formulaire, setFormulaire] = useState({
     nom: "",
     prenom: "",
     password: "",
     numAppart: "0",
-    mixe: "false",
+    mixe: "0",
     role: "",
   });
+
   //Récupération du radio coché.
   const handleRadio = (e) => {
     setSelectRadio(e.target.value);
@@ -26,14 +28,23 @@ const CreationCompte = () => {
     });
   }, [selectRadio, validation]);
 
-  //Récupération des inputs du form.
   const getElement = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormulaire((prevFormulaire) => ({
-      ...prevFormulaire,
-      role: searchRole(selectRadio),
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    if (type === "checkbox") {
+      // Utilisez checked pour déterminer si la case à cocher est cochée ou non
+      const checkboxValue = checked ? 1 : 0;
+      setFormulaire((prevFormulaire) => ({
+        ...prevFormulaire,
+        [name]: checkboxValue,
+      }));
+    } else {
+      // Traitement pour les autres types d'inputs
+      setFormulaire((prevFormulaire) => ({
+        ...prevFormulaire,
+        role: searchRole(selectRadio),
+        [name]: value,
+      }));
+    }
   };
 
   //Fonction qui me renvoie l'id_role en fonction du role selectionné.

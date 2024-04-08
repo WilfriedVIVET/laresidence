@@ -8,17 +8,24 @@ import ModalReservation from "../components/ModalReservation";
 import Draggable from "react-draggable";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { formatDate } from "../Utils/Utils";
+import { formateDateEu, formateDateScript } from "../Utils/Utils";
 
 const Cuisine = () => {
-  const currentDate = formatDate(new Date());
   const [showModal, setShowModal] = useState(false);
   const [showReservation, setShowReservation] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  //Date de debut et fin de semaine.
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  //Show de calendar.
   const [showCalendar, setShowCalendar] = useState(false);
-  const [dateDebut, setDateDebut] = useState();
-  const [dateFin, setDateFin] = useState();
-  const [jourList, setJourList] = useState([]);
+  //Date courante.
+  const currentDate = formateDateScript(new Date());
+  //Liste des date de la semaine
+  const [jourListEu, setJourListEu] = useState([]);
+  const [jourListScript, setJourListScript] = useState([]);
+
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const jours = [
     "LUNDI",
@@ -30,31 +37,33 @@ const Cuisine = () => {
     "DIMANCHE",
   ];
 
-  //Récuperation date de la semaine (début et fin)
+  //Récupération de la date clické sur calendar + 6jours.
   const getDate = (date) => {
     if (date.getDay() === 1) {
       setSelectedDate(date);
-      const formattedDate = formatDate(date);
-      const endDate = new Date(date);
-      endDate.setDate(endDate.getDate() + 6);
-      const formattedEndDate = formatDate(endDate);
-      setDateDebut(formattedDate);
-      setDateFin(formattedEndDate);
-      setJourList(generateDaysList(date, endDate));
+      const endDateWeek = new Date(date);
+      endDateWeek.setDate(endDateWeek.getDate() + 6);
+      setStartDate(formateDateScript(date));
+      setEndDate(formateDateScript(endDateWeek));
+      const [daysListEu, daysListScript] = generateDaysList(date, endDateWeek);
+      setJourListEu(daysListEu);
+      setJourListScript(daysListScript);
       setShowCalendar(!showCalendar);
     }
   };
 
-  //Récupération de toutes les dates entre le début est la fin de la date calendar.
+  //Récupération de toutes les dates de la semaine.
   const generateDaysList = (startDate, endDate) => {
-    const daysList = [];
+    const daysListEu = [];
+    const daysListScript = [];
     const currentDate = new Date(startDate);
     while (currentDate <= endDate) {
-      let dateFormated = formatDate(currentDate);
-      daysList.push(dateFormated);
+      daysListEu.push(formateDateEu(currentDate));
+      daysListScript.push(formateDateScript(currentDate));
       currentDate.setDate(currentDate.getDate() + 1);
     }
-    return daysList;
+
+    return [daysListEu, daysListScript];
   };
 
   //Affichage du calendrier (Calendar)
@@ -99,15 +108,16 @@ const Cuisine = () => {
           <span>Date du jour : {currentDate}</span>
           <span className="container-span">
             Menu du{" "}
-            <span className="span-date">{dateDebut || "00/00/00"} </span>au{" "}
-            <span className="span-date">{dateFin || "00/00/00"}</span>
+            <span className="span-date">
+              {startDate || "00-00-0000"} au {endDate || "00-00-0000"}{" "}
+            </span>
           </span>
           <button className="btn-dashboard" onClick={handleCalendar}>
             Calendrier
           </button>
           {showCalendar && (
             <div className="calendar">
-              <Calendar onChange={getDate} value={selectedDate} option />
+              <Calendar onChange={getDate} value={selectedDate} />
             </div>
           )}
           <button className="btn-dashboard" onClick={handleShowModal}>
@@ -118,7 +128,12 @@ const Cuisine = () => {
           </button>
         </div>
         {jours.map((jour, index) => (
-          <CreateMenu key={index} jour={jour} numeroDay={jourList[index]} />
+          <CreateMenu
+            key={index}
+            jour={jour}
+            jourEu={jourListEu[index]}
+            jourScript={jourListScript[index]}
+          />
         ))}
       </div>
       <Footer />

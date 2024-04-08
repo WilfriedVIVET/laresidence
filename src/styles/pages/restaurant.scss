@@ -5,69 +5,69 @@
     height: 100%;
     width: 100%;
     
-}
-
-.header {
-    display: flex;
-    height: 80px;
-    width: 100%;
-    align-items: center;
-    background-color: $secondRed;
-    color: $secondWhite;
-    
-    
-    >.date{
-        margin-left: 10px;
+    .header {
         display: flex;
-        flex-direction: column;
-        width: 60%;
+        height: 80px;
+        width: 100%;
         align-items: center;
-        justify-content: center;
+        background-color: $secondRed;
+        color: $secondWhite;
         
-        >span{
-            width: 100%;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-    }
-     
-    >.photo{
-        display: flex;
-        margin-left: 20px;
-        height: 100%;
-        width: 50%;
-        >img{
-            height: 100%;
-            width: 100%;
+        >.date{
+            padding-left: 10px;
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            align-items: center;
+            justify-content: center;
             
+            >span{
+                width: 100%;
+                font-size: 0.8em;
+                font-weight: bold;
+            }
+        }
+        
+        >.photo{
+            display: flex;
+            //margin-left: 20px;
+            height: 100%;
+            width: 45%;
+           
+            >img{
+                height: 100%;
+                width: 100%;
+                
+            }
         }
     }
+    
+    .appetit1{
+        color: $secondRed;
+        font-weight: bold;
+        font-size: 1.4em;
+        margin: auto;
+        margin-top: 20px;
+    }
+    
 }
-
-.appetit1{
-    color: $secondRed;
-    font-weight: bold;
-    font-size: 1.4em;
-    margin: auto;
-    margin-top: 20px;
-}
-
-
-
-/*********************Media queries***************************/
-@media screen and (min-width:600px) {
-    .container-menu{
-
-        >.header{
-            height: 150px;
-
-            >.date{
-                font-size: 1.8em;
+    
+    
+    /*********************Media queries***************************/
+    @media screen and (min-width:600px) {
+        .container-menu{
+            
+            >.header{
+                height: 150px;
+                
+                >.date{
+                    font-size: 1.8em;
+                    padding-left: 20px;
             }
 
             >.photo{
                 height: 100%;
-                width: 100%;
+                width: 50%;
                 >img{
                     height: 100%;
                     width: 100%;

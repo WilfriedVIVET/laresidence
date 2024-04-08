@@ -2,16 +2,14 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MenuDay from "../components/MenuDay";
 import Carrousel from "../components/Carrousel";
-import { formatDate } from "../Utils/Utils";
-import { daysOfWeek } from "../Utils/Utils";
+import { daysOfWeek, formateDateEu, formateDateScript } from "../Utils/Utils";
 
 const Restaurant = () => {
-  const currentDate = formatDate(new Date());
-
+  const currentDate = formateDateEu(new Date());
   const { startOfWeek, endOfWeek } = daysOfWeek(currentDate);
 
-  const firstDayOfWeek = formatDate(startOfWeek);
-  const lastDayOfWeek = formatDate(endOfWeek);
+  const startOfWeekFormatted = formateDateScript(startOfWeek);
+  const endOfWeekFormatted = formateDateScript(endOfWeek);
 
   return (
     <>
@@ -25,10 +23,8 @@ const Restaurant = () => {
         <div className="container-menu">
           <div className="header">
             <div className="date">
-              <span>Menu Du</span>
-              <br />
               <span>
-                {firstDayOfWeek} au {lastDayOfWeek}
+                Menu Du {startOfWeekFormatted} au {endOfWeekFormatted}
               </span>
             </div>
             <div className="photo">

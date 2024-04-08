@@ -46,17 +46,20 @@ const CreateMenu = (props) => {
   const handleSelectChange = (menuId, selectValue) => {
     setMenuDay((prevMenuDay) => ({
       ...prevMenuDay,
-      dateDay: `${props.numeroDay}`,
+      dateDay: props.jourEu,
       [menuId]: selectValue,
       jour: `${props.jour}`,
     }));
+    console.log("test = " + menuDay.dateDay);
   };
 
+  //Post du menu
   const confirm = () => {
-    console.log("menu creer + " + JSON.stringify(menuDay));
     postMenu(menuDay);
+    console.log("date envoyée = " + JSON.stringify(menuDay));
   };
 
+  //Style des select-react
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
@@ -81,7 +84,7 @@ const CreateMenu = (props) => {
         <div className="jour">
           <div className="jour-detail">
             {props.jour}
-            <span>{props.numeroDay}</span>
+            <span>{props.jourScript}</span>
           </div>
         </div>
         <div className="menu">

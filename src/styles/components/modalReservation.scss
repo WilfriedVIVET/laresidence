@@ -1,1 +1,36 @@
+.liste{
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95%;
+    width: 95%;
+    background-color: $firstWhite;
+    margin: 20px;
+    border: 4px solid $firstRed;
+    border-radius: 15px;
 
+    >table{
+        border-collapse: collapse ;
+        background-color: $firstWhite;
+        height: 95%;
+        width: 95%;
+        border: 2px solid $firstRed;
+          
+        > thead th{
+            color: $firstWhite;
+            font-size: 1.2em;
+            background-color: $secondRed;
+        }
+
+        tbody tr td{
+                border: 2px solid $firstRed;
+                align-items: center;
+                text-align: center;
+                font-size: 1.1em;
+                font-weight: bold;
+                color: $secondRed;
+        }
+        
+    }
+}

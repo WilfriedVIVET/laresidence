@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMenu } from "../Redux/actions/getMenu.action.js";
-import { formatDate, daysOfWeek } from "../Utils/Utils";
+import { formateDateEu, daysOfWeek } from "../Utils/Utils";
 import NotMenu from "./NotMenu.js";
 
 const MenuDay = () => {
@@ -14,39 +14,31 @@ const MenuDay = () => {
       const { startOfWeek, endOfWeek } = daysOfWeek(currentDate);
 
       //chargement du menu du lundi au dimanche de la semaine en cours.
-      let currentDateToLoad = startOfWeek;
-      while (currentDateToLoad <= endOfWeek) {
-        let formatedDate = formatDate(currentDateToLoad);
-        dispatch(getMenu(formatedDate));
-        currentDateToLoad.setDate(currentDateToLoad.getDate() + 1);
-      }
-
-      try {
-      } catch (error) {
-        console.error(
-          "Une erreur s'est produite pendant le chargement des menu:",
-          error
-        );
+      if (menu.length === 0) {
+        try {
+          let currentDateToLoad = startOfWeek;
+          while (currentDateToLoad <= endOfWeek) {
+            let formatedDate = formateDateEu(currentDateToLoad);
+            dispatch(getMenu(formatedDate));
+            currentDateToLoad.setDate(currentDateToLoad.getDate() + 1);
+          }
+        } catch (error) {
+          console.log("une erreur lors du chargement du menu.".error);
+        }
       }
     };
     loadMenu();
-  }, [dispatch]);
+  }, [dispatch, menu]);
 
-  // Trie les menu dans l ordre de la semaine.
+  // Tri des menus par date
   const sortedMenu = menu
     .filter((menuDay) => menuDay.length > 0)
     .sort((a, b) => {
-      const days = [
-        "Lundi",
-        "Mardi",
-        "Mercredi",
-        "Jeudi",
-        "Vendredi",
-        "Samedi",
-        "Dimanche",
-      ];
+      // Convertion des dates en objets Date pour la comparaison
+      const dateA = new Date(a[0].dateDay);
+      const dateB = new Date(b[0].dateDay);
 
-      return days.indexOf(a[0].jour) - days.indexOf(b[0].jour);
+      return dateA - dateB;
     });
 
   // Si le menu est vide, afficher le composant NotMenu

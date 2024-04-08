@@ -8,44 +8,48 @@ export const isEmpty = (value) => {
   );
 };
 
-//Formatage date en jours/mois en lettre/année
-export const formatDate = (date) => {
-  const months = [
-    "janvier",
-    "février",
-    "mars",
-    "avril",
-    "mai",
-    "juin",
-    "juillet",
-    "août",
-    "septembre",
-    "octobre",
-    "novembre",
-    "décembre",
-  ];
+//Formatage d'une date en (10-10-2024)
+export const formateDateEu = (date) => {
+  console.log("fonction getDate = " + date);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
 
+  return `${year}-${month}-${day}`;
+};
+
+//Formatage d'une date en (10-mars-2024)
+export const formateDateScript = (date) => {
   const day = String(date.getDate()).padStart(2, "0");
   const monthIndex = date.getMonth();
   const year = date.getFullYear();
-  return `${day}${months[monthIndex]}${year}`;
+
+  const monthNames = [
+    "Janvier",
+    "Février",
+    "Mars",
+    "Avril",
+    "Mai",
+    "Juin",
+    "Juillet",
+    "Août",
+    "Septembre",
+    "Octobre",
+    "Novembre",
+    "Décembre",
+  ];
+
+  const month = monthNames[monthIndex];
+
+  return `${day}-${month}-${year}`;
 };
 
 //Fonction qui recupère la date de début et de fin de la semaine du jour en cours.
 export function daysOfWeek(date) {
-  // Copie la date fournie pour ne pas la modifier
   const currentDate = new Date(date);
-
-  // Détermine le jour de la semaine (0 pour dimanche, 1 pour lundi, ..., 6 pour samedi)
   const dayOfWeek = currentDate.getDay();
-
-  // Calcule la différence entre le jour actuel et le lundi (0 pour dimanche, 1 pour lundi, ...)
   const diff = currentDate.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
-
-  // Initialise la date de début de semaine au lundi de cette semaine
   const startOfWeek = new Date(currentDate.setDate(diff));
-
-  // Initialise la date de fin de semaine au dimanche de cette semaine
   const endOfWeek = new Date(currentDate.setDate(diff + 6));
 
   return {
