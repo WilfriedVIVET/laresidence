@@ -27,6 +27,38 @@ const CreateMenu = (props) => {
   const fromage = useSelector((state) => state.getFromage);
   const dessert = useSelector((state) => state.getDessert);
 
+  //Fonction qui calcule pour chaque plat la différence de jour entre la
+  //derniére mise en menu
+  const calculateDiffDayForMenu = (menuOptions, dateOfMenu) => {
+    if (!isEmpty(menuOptions)) {
+      const diffDaysArray = menuOptions.map((menu) => {
+        const dateDebut = new Date(menu.datedmm);
+        const dateFin = new Date(dateOfMenu);
+        const differenceEnMs = dateFin - dateDebut;
+        const differenceEnJours = differenceEnMs / (1000 * 60 * 60 * 24);
+        return Math.round(differenceEnJours);
+      });
+
+      // Remplacer les valeurs supérieures à 365 jours par 0
+      const correctedDiffDaysArray = diffDaysArray.map((diff) =>
+        diff > 365 ? 0 : diff
+      );
+
+      return correctedDiffDaysArray;
+    }
+  };
+
+  // Calculer diffDays pour chaque type de menu
+  const diffDaysEntre = calculateDiffDayForMenu(entre, props.jourEu);
+  const diffDaysPlat = calculateDiffDayForMenu(plat, props.jourEu);
+  const diffDaysAccompagnement = calculateDiffDayForMenu(
+    accompagnement,
+    props.jourEu
+  );
+  const diffDaysFromage = calculateDiffDayForMenu(fromage, props.jourEu);
+  const diffDaysDessert = calculateDiffDayForMenu(dessert, props.jourEu);
+
+  //création menu.
   const [menuDay, setMenuDay] = useState({
     dateDay: "",
     entre1: "",
@@ -43,7 +75,7 @@ const CreateMenu = (props) => {
     jour: "",
   });
 
-  const handleSelectChange = (menuId, selectValue) => {
+  const handleSelectChange = (menuId, selectValue, datedmm) => {
     setMenuDay((prevMenuDay) => ({
       ...prevMenuDay,
       dateDay: props.jourEu,
@@ -61,9 +93,12 @@ const CreateMenu = (props) => {
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
-      backgroundColor: "withe",
+      backgroundColor: "white",
       textTransform: "capitalize",
       color: state.isSelected ? "#DB0000" : "#DB0000",
+      display: "flex",
+      justifyContent: "space-between",
+      width: "100%",
     }),
     singleValue: (provided) => ({
       ...provided,
@@ -95,10 +130,28 @@ const CreateMenu = (props) => {
                 <Select
                   options={entre.map((menu, index) => ({
                     value: menu.id,
-                    label: menu.titre,
+                    label: (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                        }}
+                      >
+                        <span style={{ width: "70%" }}>{menu.titre}</span>
+                        <span style={{ width: "30%" }}>
+                          {diffDaysEntre[index]} jours
+                        </span>
+                      </div>
+                    ),
+                    datedmm: menu.datedmm,
                   }))}
                   onChange={(selectedOption) =>
-                    handleSelectChange("entre1", selectedOption.label)
+                    handleSelectChange(
+                      "entre1",
+                      selectedOption.label,
+                      selectedOption.datedmm
+                    )
                   }
                   styles={customStyles}
                   placeholder="Choisissez une entrée"
@@ -109,10 +162,28 @@ const CreateMenu = (props) => {
                 <Select
                   options={entre.map((menu, index) => ({
                     value: menu.id,
-                    label: menu.titre,
+                    label: (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                        }}
+                      >
+                        <span style={{ width: "70%" }}>{menu.titre}</span>
+                        <span style={{ width: "30%" }}>
+                          {diffDaysEntre[index]} jours
+                        </span>
+                      </div>
+                    ),
+                    datedmm: menu.datedmm,
                   }))}
                   onChange={(selectedOption) =>
-                    handleSelectChange("entre2", selectedOption.label)
+                    handleSelectChange(
+                      "entre2",
+                      selectedOption.label,
+                      selectedOption.datedmm
+                    )
                   }
                   styles={customStyles}
                   placeholder="Choisissez une entrée"
@@ -123,10 +194,28 @@ const CreateMenu = (props) => {
                 <Select
                   options={entre.map((menu, index) => ({
                     value: menu.id,
-                    label: menu.titre,
+                    label: (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                        }}
+                      >
+                        <span style={{ width: "70%" }}>{menu.titre}</span>
+                        <span style={{ width: "30%" }}>
+                          {diffDaysEntre[index]} jours
+                        </span>
+                      </div>
+                    ),
+                    datedmm: menu.datedmm,
                   }))}
                   onChange={(selectedOption) =>
-                    handleSelectChange("entre3", selectedOption.label)
+                    handleSelectChange(
+                      "entre3",
+                      selectedOption.label,
+                      selectedOption.datedmm
+                    )
                   }
                   styles={customStyles}
                   placeholder="Choisissez une entrée"
@@ -144,10 +233,28 @@ const CreateMenu = (props) => {
                 <Select
                   options={plat.map((menu, index) => ({
                     value: menu.id,
-                    label: menu.titre,
+                    label: (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                        }}
+                      >
+                        <span style={{ width: "70%" }}>{menu.titre}</span>
+                        <span style={{ width: "30%" }}>
+                          {diffDaysPlat[index]} jours
+                        </span>
+                      </div>
+                    ),
+                    datedmm: menu.datedmm,
                   }))}
                   onChange={(selectedOption) =>
-                    handleSelectChange("plat1", selectedOption.label)
+                    handleSelectChange(
+                      "plat1",
+                      selectedOption.label,
+                      selectedOption.datedmm
+                    )
                   }
                   styles={customStyles}
                   placeholder="Choisissez un plat"
@@ -158,10 +265,28 @@ const CreateMenu = (props) => {
                 <Select
                   options={plat.map((menu, index) => ({
                     value: menu.id,
-                    label: menu.titre,
+                    label: (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                        }}
+                      >
+                        <span style={{ width: "70%" }}>{menu.titre}</span>
+                        <span style={{ width: "30%" }}>
+                          {diffDaysPlat[index]} jours
+                        </span>
+                      </div>
+                    ),
+                    datedmm: menu.datedmm,
                   }))}
                   onChange={(selectedOption) =>
-                    handleSelectChange("plat2", selectedOption.label)
+                    handleSelectChange(
+                      "plat2",
+                      selectedOption.label,
+                      selectedOption.datedmm
+                    )
                   }
                   styles={customStyles}
                   placeholder="Choisissez un plat"
@@ -178,10 +303,28 @@ const CreateMenu = (props) => {
                 <Select
                   options={accompagnement.map((menu, index) => ({
                     value: menu.id,
-                    label: menu.titre,
+                    label: (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                        }}
+                      >
+                        <span style={{ width: "70%" }}>{menu.titre}</span>
+                        <span style={{ width: "30%" }}>
+                          {diffDaysAccompagnement[index]} jours
+                        </span>
+                      </div>
+                    ),
+                    datedmm: menu.datedmm,
                   }))}
                   onChange={(selectedOption) =>
-                    handleSelectChange("accompagnement1", selectedOption.label)
+                    handleSelectChange(
+                      "accompagnement1",
+                      selectedOption.label,
+                      selectedOption.datedmm
+                    )
                   }
                   styles={customStyles}
                   placeholder="Choisissez un accompagnement"
@@ -192,10 +335,28 @@ const CreateMenu = (props) => {
                 <Select
                   options={accompagnement.map((menu, index) => ({
                     value: menu.id,
-                    label: menu.titre,
+                    label: (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                        }}
+                      >
+                        <span style={{ width: "70%" }}>{menu.titre}</span>
+                        <span style={{ width: "30%" }}>
+                          {diffDaysAccompagnement[index]} jours
+                        </span>
+                      </div>
+                    ),
+                    datedmm: menu.datedmm,
                   }))}
                   onChange={(selectedOption) =>
-                    handleSelectChange("accompagnement2", selectedOption.label)
+                    handleSelectChange(
+                      "accompagnement2",
+                      selectedOption.label,
+                      selectedOption.datedmm
+                    )
                   }
                   styles={customStyles}
                   placeholder="Choisissez un accompagnement"
@@ -212,10 +373,28 @@ const CreateMenu = (props) => {
                 <Select
                   options={fromage.map((menu, index) => ({
                     value: menu.id,
-                    label: menu.titre,
+                    label: (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                        }}
+                      >
+                        <span style={{ width: "70%" }}>{menu.titre}</span>
+                        <span style={{ width: "30%" }}>
+                          {diffDaysFromage[index]} jours
+                        </span>
+                      </div>
+                    ),
+                    datedmm: menu.datedmm,
                   }))}
                   onChange={(selectedOption) =>
-                    handleSelectChange("fromage1", selectedOption.label)
+                    handleSelectChange(
+                      "fromage1",
+                      selectedOption.label,
+                      selectedOption.datedmm
+                    )
                   }
                   styles={customStyles}
                   placeholder="Choisissez un fromage"
@@ -226,10 +405,28 @@ const CreateMenu = (props) => {
                 <Select
                   options={fromage.map((menu, index) => ({
                     value: menu.id,
-                    label: menu.titre,
+                    label: (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                        }}
+                      >
+                        <span style={{ width: "70%" }}>{menu.titre}</span>
+                        <span style={{ width: "30%" }}>
+                          {diffDaysFromage[index]} jours
+                        </span>
+                      </div>
+                    ),
+                    datedmm: menu.datedmm,
                   }))}
                   onChange={(selectedOption) =>
-                    handleSelectChange("fromage2", selectedOption.label)
+                    handleSelectChange(
+                      "fromage2",
+                      selectedOption.label,
+                      selectedOption.datedmm
+                    )
                   }
                   styles={customStyles}
                   placeholder="Choisissez un fromage"
@@ -246,10 +443,28 @@ const CreateMenu = (props) => {
                 <Select
                   options={dessert.map((menu, index) => ({
                     value: menu.id,
-                    label: menu.titre,
+                    label: (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                        }}
+                      >
+                        <span style={{ width: "70%" }}>{menu.titre}</span>
+                        <span style={{ width: "30%" }}>
+                          {diffDaysDessert[index]} jours
+                        </span>
+                      </div>
+                    ),
+                    datedmm: menu.datedmm,
                   }))}
                   onChange={(selectedOption) =>
-                    handleSelectChange("dessert1", selectedOption.label)
+                    handleSelectChange(
+                      "dessert1",
+                      selectedOption.label,
+                      selectedOption.datedmm
+                    )
                   }
                   styles={customStyles}
                   placeholder="Choisissez un dessert"
@@ -260,10 +475,28 @@ const CreateMenu = (props) => {
                 <Select
                   options={dessert.map((menu, index) => ({
                     value: menu.id,
-                    label: menu.titre,
+                    label: (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                        }}
+                      >
+                        <span style={{ width: "70%" }}>{menu.titre}</span>
+                        <span style={{ width: "30%" }}>
+                          {diffDaysDessert[index]} jours
+                        </span>
+                      </div>
+                    ),
+                    datedmm: menu.datedmm,
                   }))}
                   onChange={(selectedOption) =>
-                    handleSelectChange("dessert2", selectedOption.label)
+                    handleSelectChange(
+                      "dessert2",
+                      selectedOption.label,
+                      selectedOption.datedmm
+                    )
                   }
                   styles={customStyles}
                   placeholder="Choisissez un dessert"

@@ -56,3 +56,10 @@ export function daysOfWeek(date) {
     endOfWeek,
   };
 }
+
+// Fonction pour formater une date en string au format "YYYY-MM-DD"
+export function formatDate(date) {
+  return `${date.getFullYear()}-${(date.getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+}

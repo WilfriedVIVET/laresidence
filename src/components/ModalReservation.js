@@ -3,15 +3,15 @@ import React from "react";
 
 const ModalReservation = ({ handleShowReservation }) => {
   const plats = [
+    "Entrée 1",
+    "Entrée 2",
+    "Entrée 3",
     "Plat 1",
     "Plat 2",
-    "Plat 3",
-    "Plat 4",
-    "Plat 5",
-    "Plat 6",
-    "Plat 7",
-    "Plat 8",
-    "Plat 9",
+    "Accompagnement 1",
+    "Accompagnement 2",
+    "Dessert 1",
+    "Dessert 2",
   ];
   const votes = [5, 8, 3, 6, 9, 2, 7, 4, 1];
 

@@ -8,6 +8,8 @@ import getDessert from "./getDessert.reducer";
 import getMenu from "./getMenu.reducer";
 import getUtilisateur from "./getUtilisateur.reducer";
 import getDateMenu from "./getDateMenu.reducer";
+import getRole from "./getRole.reducer";
+import getEphemeride from "./getEphemeride.reducer";
 
 export default combineReducers({
   modeReducer,
@@ -19,4 +21,6 @@ export default combineReducers({
   getMenu,
   getUtilisateur,
   getDateMenu,
+  getRole,
+  getEphemeride,
 });

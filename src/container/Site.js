@@ -9,6 +9,9 @@ import Mention from "../pages/Mention";
 import Restaurant from "../pages/Restaurant";
 import Admin from "../pages/Admin";
 import Cuisine from "../pages/Cuisine";
+import AdminReservation from "../pages/AdminReservation";
+import AdminActivite from "../pages/AdminActivite";
+import Resident from "../pages/Resident";
 
 const Site = () => {
   return (
@@ -23,6 +26,9 @@ const Site = () => {
         <Route path="/mention" element={<Mention />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/cuisine" element={<Cuisine />} />
+        <Route path="/service" element={<AdminReservation />} />
+        <Route path="/animation" element={<AdminActivite />} />
+        <Route path="/resident" element={<Resident />} />
       </Routes>
     </BrowserRouter>
   );

@@ -113,7 +113,7 @@ const ListeUtilisateur = () => {
                 <tr>
                   <th onClick={() => handleSort("nom")}>Nom</th>
                   <th onClick={() => handleSort("prenom")}>Prénom</th>
-                  <th onClick={() => handleSort("appt")}>Num.Appart</th>
+                  <th onClick={() => handleSort("appt")}>Appart</th>
                   <th onClick={() => handleSort("mixed")}>Mixé</th>
                 </tr>
               </thead>
@@ -127,7 +127,7 @@ const ListeUtilisateur = () => {
                       <td>{resident.nom}</td>
                       <td>{resident.prenom}</td>
                       <td>{resident.appt}</td>
-                      <td>{resident.mixed}</td>
+                      <td>{resident.mixed ? "oui" : "non"}</td>
                     </tr>
                   ))}
                 </tbody>

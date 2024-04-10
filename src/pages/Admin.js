@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import Amplitude from "../components/Amplitude";
+
 import CreationCompte from "../components/CreationCompte.js";
 import ListeUtilisateur from "../components/ListeUtilisateur.js";
 import { getUtilisateur } from "../Redux/actions/getUtilisateur.action.js";
@@ -21,15 +20,12 @@ const Admin = () => {
         <div className="title">
           <h1>Administrateur</h1>
         </div>
-        <div>
-          <Amplitude />
-        </div>
+
         <div className="container-admin">
           <CreationCompte />
           <ListeUtilisateur />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

@@ -10,7 +10,7 @@ const CreationCompte = () => {
     prenom: "",
     password: "",
     numAppart: "0",
-    mixe: "0",
+    mixe: 0,
     role: "",
   });
 
@@ -31,14 +31,14 @@ const CreationCompte = () => {
   const getElement = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === "checkbox") {
-      // Utilisez checked pour déterminer si la case à cocher est cochée ou non
+      // Check de la checkbox.
       const checkboxValue = checked ? 1 : 0;
       setFormulaire((prevFormulaire) => ({
         ...prevFormulaire,
         [name]: checkboxValue,
       }));
     } else {
-      // Traitement pour les autres types d'inputs
+      //Autres types d'inputs
       setFormulaire((prevFormulaire) => ({
         ...prevFormulaire,
         role: searchRole(selectRadio),
@@ -70,6 +70,7 @@ const CreationCompte = () => {
     e.preventDefault();
     postCompte(formulaire);
     setValidation(!validation);
+    console.log("form envoyé = " + JSON.stringify(formulaire));
   };
 
   return (

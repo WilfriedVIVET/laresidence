@@ -7,23 +7,30 @@
     color: $firstWhite;
     align-items: center;
    
-    >span{
-      margin-left: 20px;
-      font-size: 1.2em;
-    }
+    >.left-info{
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
 
-    >.container-span{
-      width:400px;  
-      font-size: 1.2em;
-      margin-left: 20PX;
-      
-      >.span-date{
+      >span{
+        margin-left: 20px;
         font-size: 1.2em;
-        min-width: 140px;
-       
+      }
+      
+      >.container-span{
+        width:400px;  
+        font-size: 1.2em;
+        margin-left: 20PX;
+        
+        >.span-date{
+          font-size: 1em;
+          min-width: 140px;
+          
+        }
       }
     }
-  
+      
   >.btn-dashboard{
     width: auto;
     padding: 5px;
@@ -50,6 +57,7 @@
   border-radius: 8px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   border: 2px solid $firstRed;
+  z-index: 3;
  }
  .react-calendar__navigation button {
   color: $firstRed;
