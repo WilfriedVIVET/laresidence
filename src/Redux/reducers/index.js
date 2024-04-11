@@ -9,6 +9,7 @@ import getMenu from "./getMenu.reducer";
 import getUtilisateur from "./getUtilisateur.reducer";
 import getDateMenu from "./getDateMenu.reducer";
 import getRole from "./getRole.reducer";
+import getMonthMenu from "./getMonthMenu.reducer";
 import getEphemeride from "./getEphemeride.reducer";
 
 export default combineReducers({
@@ -23,4 +24,5 @@ export default combineReducers({
   getDateMenu,
   getRole,
   getEphemeride,
+  getMonthMenu,
 });

@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import CreateMenu from "../components/CreateMenu";
 import Modal from "../components/Modal";
 import ModalReservation from "../components/ModalReservation";
+import ModalMonthMenu from "../components/ModalMonthMenu";
 import Draggable from "react-draggable";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -16,12 +17,13 @@ import {
 } from "../Utils/Utils";
 import store from "../Redux/store/store";
 import { getDateMenu } from "../Redux/actions/getDateMenu.action";
+import { getMonthMenu } from "../Redux/actions/getMonthMenu.action";
 
 const Cuisine = () => {
   const datesMenu = useSelector((state) => state.getDateMenu);
   const [showModal, setShowModal] = useState(false);
   const [showReservation, setShowReservation] = useState(false);
-
+  const [showMonthMenu, setShowMonthMenu] = useState(false);
   //Date de debut et fin de semaine.
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -30,7 +32,6 @@ const Cuisine = () => {
   //Mois courant.
   const dateNow = new Date();
   const currentMonth = dateNow.getMonth() + 1;
-
   //Date courante formatée.
   const currentDate = formateDateScript(new Date());
   //Liste des date de la semaine
@@ -53,7 +54,9 @@ const Cuisine = () => {
   useEffect(() => {
     if (isEmpty(store.getState().getDateMenu))
       store.dispatch(getDateMenu(selectMonth));
-  }, [selectMonth]);
+    if (isEmpty(store.getState().getMonthMenu))
+      store.dispatch(getMonthMenu(currentMonth));
+  }, [selectMonth, currentMonth]);
 
   //Fonction pour colorer les cases du calendrier aux dates où un menu est déjà créé en BDD.
   const tileContent = ({ date }) => {
@@ -123,6 +126,14 @@ const Cuisine = () => {
     setSelectMonth(month);
   };
 
+  //Ouverture Modal menu du mois (modalMonthMenu)
+  const handleShowModalMonthMenu = () => {
+    setShowMonthMenu(!showMonthMenu);
+  };
+
+  //Création menu à theme.
+  const handleMenuTheme = () => {};
+
   return (
     <>
       <div className="content">
@@ -143,6 +154,14 @@ const Cuisine = () => {
           </Draggable>
         )}
 
+        {showMonthMenu && (
+          <Draggable>
+            <ModalMonthMenu
+              handleShowModalMonthMenu={handleShowModalMonthMenu}
+            />
+          </Draggable>
+        )}
+
         <div className="header-menu">
           <div className="left-info">
             <span>Date du jour : {currentDate}</span>
@@ -150,26 +169,37 @@ const Cuisine = () => {
               Menu du {startDate || "00-00-0000"} au {endDate || "00-00-0000"}{" "}
             </span>
           </div>
+          <div className="dashboard">
+            <button className="btn-dashboard" onClick={handleCalendar}>
+              Calendrier
+            </button>
+            {showCalendar && (
+              <div className="calendar">
+                <Calendar
+                  onChange={getDate}
+                  value={selectedDate}
+                  onActiveStartDateChange={handleGetMonth}
+                  tileContent={tileContent}
+                />
+              </div>
+            )}
+            <button className="btn-dashboard" onClick={handleShowModal}>
+              Ajouter/Supprimer un plat
+            </button>
+            <button className="btn-dashboard" onClick={handleShowReservation}>
+              Voir reservation du jour
+            </button>
 
-          <button className="btn-dashboard" onClick={handleCalendar}>
-            Calendrier
-          </button>
-          {showCalendar && (
-            <div className="calendar">
-              <Calendar
-                onChange={getDate}
-                value={selectedDate}
-                onActiveStartDateChange={handleGetMonth}
-                tileContent={tileContent}
-              />
-            </div>
-          )}
-          <button className="btn-dashboard" onClick={handleShowModal}>
-            Ajouter/Supprimer un plat
-          </button>
-          <button className="btn-dashboard" onClick={handleShowReservation}>
-            Voir reservation du jour
-          </button>
+            <button
+              className="btn-dashboard"
+              onClick={handleShowModalMonthMenu}
+            >
+              Menus du mois
+            </button>
+            <button className="btn-dashboard" onClick={handleMenuTheme}>
+              Créer menu à thème
+            </button>
+          </div>
         </div>
         {jours.map((jour, index) => (
           <CreateMenu

@@ -1,0 +1,82 @@
+.monthMenu{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 80%;
+    background-color: $firstWhite;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 11;
+
+    >.close{
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        top: 5px;
+        left: calc(100% - 70px);
+        background-color: $firstWhite;
+        color: $secondRed;
+        font-size: 1.2em;
+        box-shadow: 3px 3px 14px -1px rgba(0,0,0,0.64);
+    }
+    >.modal-header{
+        display: flex;
+        color: $firstWhite;
+        height: 60px;
+        min-height: 60px;
+        background-color: $firstRed;
+        align-items: center;
+        justify-content: center;
+    }
+
+    >.content-monthMenu{
+        display: flex;
+        flex-wrap: wrap;
+        height: 90%;
+        width: 90%;
+        border: 2px solid $secondRed;
+        margin: auto;
+        margin-top:20px;
+        margin-bottom: 20px;
+        overflow-y: scroll;
+
+        >.content-menu{
+            display: flex;
+        flex-direction: column;
+        height: 650px;
+        border: 1px solid $firstRed;
+        width: 95%;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 25px;
+        font-size: 1.2em;
+        background-color: $secondWhite;
+        box-shadow:$boxShadow;
+        }
+
+        >.test{
+            width: 80px;
+            height: 80px;
+            background-color: aqua;
+        }
+    }
+}
+
+.date{
+    display: flex;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    background: #db0000;
+    background: linear-gradient(146deg,#db0000 0%, #6e0101 80%);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    justify-content: center;
+}
+.jour{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: $firstWhite;     
+}

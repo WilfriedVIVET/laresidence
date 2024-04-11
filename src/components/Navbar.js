@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { resetRole } from "../Redux/actions/getRole.action";
-import { useNavigate } from "react-router-dom";
 import { isEmpty } from "../Utils/Utils";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [isActif, setIsActif] = useState(false);
   const role = useSelector((state) => state.getRole);
   const [connect, setConnect] = useState(false);
@@ -20,7 +18,7 @@ const Navbar = () => {
     if (!isEmpty(role)) {
       setConnect(true);
     }
-  }, [role, navigate]);
+  }, [role]);
 
   const menuBurger = () => {
     setIsActif(!isActif);
@@ -28,7 +26,6 @@ const Navbar = () => {
 
   const handleConnection = () => {
     setConnect(true);
-    navigate(`/${role.role}`);
     resetStateRole();
   };
 
@@ -70,7 +67,7 @@ const Navbar = () => {
                 {role.role.charAt(0).toUpperCase() + role.role.slice(1)}
               </NavLink>
             ) : (
-              "Visiteur"
+              ""
             )}
           </li>
         </ul>

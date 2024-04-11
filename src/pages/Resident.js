@@ -10,7 +10,7 @@ const Resident = () => {
     nom: "",
     description: "",
   });
-  const dateDay = new Date();
+
   const currentDate = formateDateScript(new Date());
   useEffect(() => {
     try {
@@ -20,7 +20,6 @@ const Resident = () => {
           nom: data.saintdujour.nom,
           description: data.saintdujour.description,
         });
-        console.log("saint du jour = " + ephemeride);
       });
     } catch (error) {
       console.log("Probléme de connexion avec l'API.");

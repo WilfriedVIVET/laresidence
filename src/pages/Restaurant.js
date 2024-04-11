@@ -7,7 +7,6 @@ import { daysOfWeek, formateDateEu, formateDateScript } from "../Utils/Utils";
 const Restaurant = () => {
   const currentDate = formateDateEu(new Date());
   const { startOfWeek, endOfWeek } = daysOfWeek(currentDate);
-
   const startOfWeekFormatted = formateDateScript(startOfWeek);
   const endOfWeekFormatted = formateDateScript(endOfWeek);
 

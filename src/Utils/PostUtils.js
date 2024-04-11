@@ -9,9 +9,8 @@ export const postMenu = async (menuDay) => {
     );
     //alert("success " + response.data.message);
     alert(response.data.message);
-    console.log(response.data.message);
   } catch (error) {
-    alert("Erreur de  :" + error.response.data.error);
+    alert("Erreur de  :" + error);
     throw error;
   }
 };
