@@ -13,7 +13,7 @@
         background-color: $secondRed;
         color: $secondWhite;
         
-        >.date{
+        >.date-restaurant{
             padding-left: 10px;
             display: flex;
             flex-direction: column;
@@ -23,7 +23,7 @@
             
             >span{
                 width: 100%;
-                font-size: 0.8em;
+                font-size: 1.8em;
                 font-weight: bold;
             }
         }
@@ -50,6 +50,13 @@
         margin-top: 20px;
     }
     
+    >.container-menuDay{
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+        width: 100%;
+        
+    }
 }
     
     

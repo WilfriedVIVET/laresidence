@@ -41,26 +41,7 @@
         margin-bottom: 20px;
         overflow-y: scroll;
 
-        >.content-menu{
-            display: flex;
-        flex-direction: column;
-        height: 650px;
-        border: 1px solid $firstRed;
-        width: 95%;
-        margin: auto;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        border-radius: 25px;
-        font-size: 1.2em;
-        background-color: $secondWhite;
-        box-shadow:$boxShadow;
-        }
-
-        >.test{
-            width: 80px;
-            height: 80px;
-            background-color: aqua;
-        }
+        
     }
 }
 
